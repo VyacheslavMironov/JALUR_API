@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\TypeWorkoutsController;
+use App\Http\Controllers\Api\WorkoutsController;
 
 
 Route::prefix('user')->group(function () {
@@ -38,4 +39,15 @@ Route::prefix('type')->group(function () {
             Route::post('delete', [TypeWorkoutsController::class, 'DeleteAction']);
         });
     });
+});
+
+Route::prefix('workouts')->group(function () {
+    Route::get('show/{workout_id}', [WorkoutsController::class, 'ShowAction']);
+        Route::get('all', [WorkoutsController::class, 'AllAction']);
+        // Запросы с Bearer токеном
+        Route::middleware('auth:sanctum')->group(function (){
+            Route::post('create', [WorkoutsController::class, 'CreateAction']);
+            Route::post('delete', [WorkoutsController::class, 'DeleteAction']);
+            Route::post('update', [WorkoutsController::class, 'UpdateAction']);
+        });
 });

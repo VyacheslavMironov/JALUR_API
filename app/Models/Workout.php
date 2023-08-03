@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TypeWorkouts extends Model
+class Workout extends Model
 {
     use HasFactory;
 
@@ -15,6 +15,9 @@ class TypeWorkouts extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'TypeWorkoutId',
         'Name',
+        'Image',
+        'Description',
     ];
 }

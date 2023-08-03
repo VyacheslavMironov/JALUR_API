@@ -64,6 +64,21 @@ class ValidateService implements IValidateService
         "Phone.required" => "Поле ввода номера телефона обязательно к заполнению!\nФормат\n\t+x (xxx) xxx-xx-xx"
     ];
 
+    protected const WORKOUTS_VALIDATE_RULE = [
+        "TypeWorkoutId" => "required",
+        "Name" => "required",
+        "Image" => "required",
+        "Description" => "required",
+    ];
+
+    protected const WORKOUTS_VALIDATE_ERRORS = [
+        // REQUIRED MESSAGE
+        "TypeWorkoutId.required" => "Поле обязательно для заполнения!",
+        "Name.required" => "Укажите имя!",
+        "Image.required" => "Выберите обложку!",
+        "Description.required" => "Поле описания обязательно для заполнения!",
+    ];
+
     public function UserValidateAction(Request $request)
     {
         return $request->validate(self::USER_VALIDATE_RULE, self::USER_VALIDATE_ERRORS);
@@ -82,5 +97,10 @@ class ValidateService implements IValidateService
     public function LogoutUserValidateAction(Request $request)
     {
         return $request->validate(self::LOGOUT_USER_VALIDATE_RULE, self::LOGOUT_USER_VALIDATE_ERRORS);
+    }
+
+    public function WorkoutsValidateAction(Request $request)
+    {
+        return $request->validate(self::WORKOUTS_VALIDATE_RULE, self::WORKOUTS_VALIDATE_ERRORS);
     }
 }
