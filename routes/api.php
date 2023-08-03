@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\TypeWorkoutsController;
 
 
 Route::prefix('user')->group(function () {
@@ -24,5 +25,17 @@ Route::prefix('user')->group(function () {
     // Запросы с Bearer токеном
     Route::middleware('auth:sanctum')->group(function (){
         Route::get('logout', [UserController::class, 'LogoutAction']);
+    });
+});
+
+Route::prefix('type')->group(function () {
+    Route::prefix('workouts')->group(function () {
+        Route::get('show/{tpe_work_id}', [TypeWorkoutsController::class, 'ShowAction']);
+        Route::get('all', [TypeWorkoutsController::class, 'AllAction']);
+        // Запросы с Bearer токеном
+        Route::middleware('auth:sanctum')->group(function (){
+            Route::post('create', [TypeWorkoutsController::class, 'CreateAction']);
+            Route::post('delete', [TypeWorkoutsController::class, 'DeleteAction']);
+        });
     });
 });

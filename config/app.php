@@ -171,6 +171,7 @@ return [
         // Application service
         App\Providers\UserServiceProvider::class,
         App\Providers\ValidateServiceProvider::class,
+        App\Providers\TypeWorkoutsServiceProvider::class,
     ])->toArray(),
 
     /*
