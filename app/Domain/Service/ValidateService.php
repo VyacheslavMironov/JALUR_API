@@ -155,6 +155,8 @@ class ValidateService implements IValidateService
         return $request->validate(self::SCHEDULES_VALIDATE_RULE, self::SCHEDULES_VALIDATE_ERRORS);
     }
 
+
+
     /**
      * 
      */
@@ -171,5 +173,28 @@ class ValidateService implements IValidateService
     public function RecordsValidateAction(Request $request)
     {
         return $request->validate(self::RECORDS_VALIDATE_RULE, self::RECORDS_VALIDATE_ERRORS);
+    }
+
+
+
+    /**
+     * 
+     */
+    protected const HISTORY_WORKOUTS_VALIDATE_RULE = [
+        "ScheduleId" => "required",
+        "UserId" => "required"
+    ];
+
+    protected const HISTORY_WORKOUTS_VALIDATE_ERRORS = [
+        // REQUIRED MESSAGE
+        "TypeWorkoutId.required" => "Поле обязательно для заполнения!",
+        "WorkoutId.required" => "Поле обязательно для заполнения!",
+        "UserId.required" => "Поле обязательно для заполнения!",
+        "Active.required" => "Поле обязательно для заполнения!",
+        "CountFreezingDay.required" => "Поле обязательно для заполнения!",
+    ];
+    public function HistoryWorkoutsValidateAction(Request $request)
+    {
+        return $request->validate(self::HISTORY_WORKOUTS_VALIDATE_RULE, self::HISTORY_WORKOUTS_VALIDATE_ERRORS);
     }
 }

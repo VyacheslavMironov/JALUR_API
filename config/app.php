@@ -175,6 +175,7 @@ return [
         App\Providers\WorkoutServiceProvider::class,
         App\Providers\ScheduleServiceProvider::class,
         App\Providers\RecordsServiceProvider::class,
+        App\Providers\HistoryWorkoutsServiceProvider::class,
     ])->toArray(),
 
     /*

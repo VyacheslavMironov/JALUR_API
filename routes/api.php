@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\TypeWorkoutsController;
 use App\Http\Controllers\Api\WorkoutsController;
 use App\Http\Controllers\Api\ScheduleController;
 use App\Http\Controllers\Api\RecordController;
+use App\Http\Controllers\Api\HistoryWorkoutsController;
 
 
 Route::prefix('user')->group(function () {
@@ -73,5 +74,18 @@ Route::prefix('record')->group(function () {
         Route::post('create', [RecordController::class, 'CreateAction']);
         Route::get('delete/{record_id}', [RecordController::class, 'DeleteAction']);
         Route::post('update', [RecordController::class, 'UpdateAction']);
+    });
+});
+
+Route::prefix('history')->group(function () {
+    Route::prefix('workout')->group(function () {
+        Route::get('show/{history_workout_id}', [HistoryWorkoutsController::class, 'ShowAction']);
+        Route::get('all', [HistoryWorkoutsController::class, 'AllAction']);
+        // Запросы с Bearer токеном
+        Route::middleware('auth:sanctum')->group(function (){
+            Route::post('create', [HistoryWorkoutsController::class, 'CreateAction']);
+            Route::get('delete/{history_workout_id}', [HistoryWorkoutsController::class, 'DeleteAction']);
+            Route::post('update', [HistoryWorkoutsController::class, 'UpdateAction']);
+        });
     });
 });
