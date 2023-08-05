@@ -32,7 +32,7 @@ final class UserRepository implements IUserRepository
 
     public function Search(SearchUserByPhoneDTO $context)
     {
-        return User::where('Phone', $context->Phone);
+        return User::where('Phone', $context->Phone)->get();
     }
 
     public function Auth(AuthUserDTO $context)
@@ -44,9 +44,11 @@ final class UserRepository implements IUserRepository
 
     public function UpdateCode(CodeUserDTO $context, string $new_password)
     {
-        $model = User::where('Phone', $context->Phone);
-        $model->Password = $new_password;
-        $model->save();
+        $model = User::where('Phone', $context->Phone)->get();
+        foreach ($model as $value) {
+            $value->Password = $new_password;
+            $value->save();
+        }
         return $model;
     }
 

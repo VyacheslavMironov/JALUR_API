@@ -24,7 +24,7 @@ class UserController extends Controller
             new CreateUserDTO(
                 $request->FirstName,
                 $request->LastName,
-                $request->Image ? $request->Image : null,
+                $request->Image ? $request->file('Image')->store('uploads', 'public') : null,
                 $request->Description ? $request->Description : null,
                 $request->Weight ? $request->Weight : null,
                 $request->Height ? $request->Height : null,
@@ -32,7 +32,7 @@ class UserController extends Controller
                 $request->Gender,
                 $request->Phone,
                 $request->Role,
-                $request->Password
+                null
             )
         );
     }
@@ -40,8 +40,8 @@ class UserController extends Controller
     public function AuthAction(Request $request, UserService $service, ValidateService $validate)
     {
         $validate->AuthUserValidateAction($request);
-        if (Hash::check($service->SearchAction(
-            new SearchUserByPhoneDTO($validate['Phone'])), $validate['Password']))
+        $user = $service->SearchAction(new SearchUserByPhoneDTO($request->Phone));
+        if (Hash::check($request->Password, $user[0]->Password))
         {
             return $service->AuthAction(
                 new AuthUserDTO(
@@ -52,17 +52,17 @@ class UserController extends Controller
         }
         else
         {
-            UserErrors::PasswordNotHandler();
+            return UserErrors::PasswordNotHandler();
         }
     }
 
     public function CodeAction(Request $request, UserService $service, ValidateService $validate)
     {
         $validate->CodeUserValidateAction($request);
-        if ($service->SearchAction(new SearchUserByPhoneDTO($validate['Phone'])))
+        if ($service->SearchAction(new SearchUserByPhoneDTO($request->Phone)))
         {
             return $service->CodeAction(
-                new CodeUserDTO($validate['Phone'])
+                new CodeUserDTO($request->Phone)
             );
         }
         else
@@ -92,10 +92,10 @@ class UserController extends Controller
         );
     }
 
-    public function LogoutAction(int $id, UserService $service)
+    public function LogoutAction(int $user_id, UserService $service)
     {
         return $service->LogoutAction(
-            new LogoutUserDTO($id)
+            new LogoutUserDTO($user_id)
         );
     }
 }

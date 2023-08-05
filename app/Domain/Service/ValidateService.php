@@ -10,11 +10,10 @@ class ValidateService implements IValidateService
      * 
      */
     protected const USER_VALIDATE_RULE = [
-        "FirstName" => "required|min:2|max|40",
-        "LastName" => "required|min:2|max|40",
+        "FirstName" => "required|min:2|max:40",
+        "LastName" => "required|min:2|max:40",
         "Phone" => "required",
         "Role" => "required",
-        "Password" => "required|min:8|max|20"
     ];
     
     protected const USER_VALIDATE_ERRORS = [
@@ -23,15 +22,12 @@ class ValidateService implements IValidateService
         "LastName.required" => "Поле ввода фамилии обязательно к заполнению!",
         "Phone.required" => "Поле ввода номера телефона обязательно к заполнению!\nФормат\n\t+x (xxx) xxx-xx-xx",
         "Role.required" => "Поле выбора роли обязательно к заполнению!",
-        "Password.required" => "Поле ввода пароля обязательно к заполнению!",
         // MIN MESSAGE
         "FirstName.min" => "Поле ввода имени не может быть меньше :min символов!",
         "LastName.min" => "Поле ввода фамилии не может быть меньше :min символов!",
-        "Password.min" => "Пароль короткий! Приемлемая длинна пароля должна быть не меньше :min символов!",
         // MAX MESSAGE
         "FirstName.min" => "Поле ввода имени не может быть больше :max символов!",
         "LastName.min" => "Поле ввода фамилии не может быть больше :max символов!",
-        "Password.min" => "Пароль длинный! Приемлемая длинна пароля должна превышать :max символов!"
     ];
 
     
@@ -47,17 +43,15 @@ class ValidateService implements IValidateService
      */
     protected const AUTH_USER_VALIDATE_RULE = [
         "Phone" => "required",
-        "Password" => "required|min:8|max|20"
+        "Password" => "required|max:6"
     ];
 
     protected const AUTH_USER_VALIDATE_ERRORS = [
         // REQUIRED MESSAGE
         "Phone.required" => "Поле ввода номера телефона обязательно к заполнению!\nФормат\n\t+x (xxx) xxx-xx-xx",
         "Password.required" => "Поле ввода пароля обязательно к заполнению!",
-        // MIN MESSAGE
-        "Password.min" => "Пароль короткий! Приемлемая длинна пароля должна быть не меньше :min символов!",
         // MAX MESSAGE
-        "Password.min" => "Пароль длинный! Приемлемая длинна пароля должна превышать :max символов!"
+        "Password.max" => "Пароль длинный! Приемлемая длинна пароля должна превышать :max символов!"
     ];
     public function AuthUserValidateAction(Request $request)
     {

@@ -34,7 +34,8 @@ return new class extends Migration
             $table->enum('Role', ['Администратор', 'Тренер', 'Клиент'])
                 ->default('Клиент')
                 ->nullable();
-            $table->string('Password');
+            $table->string('Password')
+                ->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

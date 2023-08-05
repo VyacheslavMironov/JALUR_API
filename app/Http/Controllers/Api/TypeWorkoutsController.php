@@ -14,7 +14,6 @@ class TypeWorkoutsController extends Controller
 {
     public function CreateAction(Request $request, TypeWorkoutsService $service, ValidateService $validate)
     {
-        $validate->UserValidateAction($request);
         return $service->CreateAction(
             new CreateTypeWorkoutsDTO($request->Name)
         );

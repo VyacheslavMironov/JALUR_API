@@ -13,11 +13,11 @@ final class CreateUserDTO
     public string|null $Gender;
     public string $Phone;
     public string $Role;
-    public string $Password;
+    public string|null $Password;
 
     public function __construct(string $FirstName, string $LastName, string|null $Image, string|null $Description,
                                 float|null $Weight, float|null $Height, int|null $Age, string|null $Gender, string $Phone,
-                                string $Role, string $Password)
+                                string $Role, string|null $Password)
     {
         $this->FirstName = $FirstName;
         $this->LastName = $LastName;

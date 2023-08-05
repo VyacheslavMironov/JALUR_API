@@ -28,7 +28,7 @@ Route::prefix('user')->group(function () {
     Route::post('code', [UserController::class, 'CodeAction']);
     // Запросы с Bearer токеном
     Route::middleware('auth:sanctum')->group(function (){
-        Route::get('logout', [UserController::class, 'LogoutAction']);
+        Route::get('logout/{user_id}', [UserController::class, 'LogoutAction']);
     });
 });
 
@@ -39,7 +39,7 @@ Route::prefix('type')->group(function () {
         // Запросы с Bearer токеном
         Route::middleware('auth:sanctum')->group(function (){
             Route::post('create', [TypeWorkoutsController::class, 'CreateAction']);
-            Route::get('delete{tpe_work_id}', [TypeWorkoutsController::class, 'DeleteAction']);
+            Route::get('delete/{tpe_work_id}', [TypeWorkoutsController::class, 'DeleteAction']);
         });
     });
 });

@@ -20,7 +20,8 @@ class WorkoutsController extends Controller
             new CreateWorkoutsDTO(
                 $request->TypeWorkoutId,
                 $request->Name,
-                $request->Image,
+                $request->file('Image')
+                        ->store('uploads', 'public'),
                 $request->Description
             )
         );
@@ -50,10 +51,11 @@ class WorkoutsController extends Controller
         $validate->WorkoutsValidateAction($request);
         return $service->UpdateAction(
             new UpdateWorkoutsDTO(
-                $request->id,
+                $request->Id,
                 $request->TypeWorkoutId,
                 $request->Name,
-                $request->Image,
+                $request->file('Image')
+                    ->store('uploads', 'public'),
                 $request->Description
             )
         );

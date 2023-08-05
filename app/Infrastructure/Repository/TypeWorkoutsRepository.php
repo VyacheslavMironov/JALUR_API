@@ -23,7 +23,7 @@ final class TypeWorkoutsRepository implements ITypeWorkoutsRepository
 
     public function All()
     {
-        return TypeWorkouts::get()->latest();
+        return TypeWorkouts::get();
     }
 
     public function Delete(DeleteTypeWorkoutsDTO $context)

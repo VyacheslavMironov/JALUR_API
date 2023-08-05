@@ -28,7 +28,7 @@ final class WorkoutRepository implements IWorkoutsRepository
 
     public function All()
     {
-        return Workout::get()->latest();
+        return Workout::get();
     }
 
     public function Delete(DeleteWorkoutsDTO $context)

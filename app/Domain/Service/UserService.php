@@ -9,6 +9,7 @@ use App\DTO\User\UpdateUserDTO;
 use App\DTO\User\LogoutUserDTO;
 use App\Infrastructure\Repository\UserRepository;
 use App\Domain\IService\IUserService;
+use Illuminate\Support\Facades\Hash;
 
 class UserService implements IUserService
 {
@@ -46,7 +47,8 @@ class UserService implements IUserService
 
     public function CodeAction(CodeUserDTO $context)
     {
-        $new_password = self::generateRandomString();
+        // $new_password = Hash::make(self::generateRandomString());
+        $new_password = Hash::make('000000');
         return $this->repository->UpdateCode($context, $new_password);
     }
 
