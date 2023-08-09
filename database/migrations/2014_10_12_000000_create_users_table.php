@@ -30,7 +30,8 @@ return new class extends Migration
                 ->default('Женщина')
                 ->nullable();
             $table->string('Phone')
-                ->nullable();
+                ->nullable()
+                ->unique();
             $table->enum('Role', ['Администратор', 'Тренер', 'Клиент'])
                 ->default('Клиент')
                 ->nullable();

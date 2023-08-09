@@ -35,22 +35,25 @@
                                     </div>
                                     <div class="col-4"></div>
                                 </div>
-                                <div class="row bg-table rounded mb-2 p-1">
-                                    <div class="col-4 d-flex align-items-center">
-                                        <span>Название тренировки 1</span>
+                                @foreach($workouts as $el)
+                                    <div class="row bg-table rounded mb-2 p-1">
+                                        <div class="col-4 d-flex align-items-center">
+                                            <span>{{ $el->Name }}</span>
+                                        </div>
+                                        <div class="col-2 d-flex align-items-center">
+                                            <span>Тип</span>
+                                        </div>
+                                        <div class="col-4 d-flex align-items-center">
+                                            <span>{{ $el->Description }}</span>
+                                        </div>
+                                        <div class="col-2 d-flex align-items-end">
+                                            <form action="{{ route('admin.query.workout.delete', ['id' => $el->id]) }}" method="get">
+                                                @csrf
+                                                <button type="submit" class="btn">Удалить</button>
+                                            </form>
+                                        </div>
                                     </div>
-                                    <div class="col-2 d-flex align-items-center">
-                                        <span>Тип</span>
-                                    </div>
-                                    <div class="col-4 d-flex align-items-center">
-                                        <span>Какое - то описание супер тренировки....</span>
-                                    </div>
-                                    <div class="col-2 d-flex align-items-end">
-                                        <form action="#" method="post">
-                                            <button type="submit" class="btn">Удалить</button>
-                                        </form>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

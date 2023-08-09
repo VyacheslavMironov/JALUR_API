@@ -40,195 +40,35 @@
                                             <span>Время</span>
                                         </div>
                                     </div>
-                                    <div class="row bg-table rounded mb-2">
+                                    @foreach($recodrs as $el)
+                                        <div class="row bg-table rounded mb-2">
                                         <div class="col-2 d-flex align-items-center">
-                                            <span>Соколова Д</span>
+                                            <span>{{ $el['first_name'] }} {{ $el['last_name'] }}</span>
                                         </div>
                                         <div class="col-3 d-flex align-items-center">
-                                            <span>+7 (ххх) ххх-хх-хх</span>
+                                            <span>{{ $el['phone'] }}</span>
                                         </div>
                                         <div class="col-2">
                                             <div>
-                                                <span>Название тренировки</span>
+                                                <span>{{ $el['schedule'] }}</span>
                                             </div>
                                             <div>
                                                 <span>
-                                                    <small>Тип тренировки</small>
+                                                    <small>{{ $el['schedule_type'] }}</small>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="col-2 d-flex align-items-center">
-                                            <span>Соколова Д</span>
+                                            <span>{{ $el['couch'] }}</span>
                                         </div>
                                         <div class="col-1 d-flex align-items-center">
-                                            <span>ПН</span>
+                                            <span>{{ $el['week_day'] }}</span>
                                         </div>
                                         <div class="col-2 d-flex align-items-center">
-                                            <span>14:00</span>
+                                            <span>{{ mb_substr($el['start_time'], 0, 5) }}</span>
                                         </div>
                                     </div>
-                                    <div class="row bg-table rounded mb-2">
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>Соколова Д</span>
-                                        </div>
-                                        <div class="col-3 d-flex align-items-center">
-                                            <span>+7 (ххх) ххх-хх-хх</span>
-                                        </div>
-                                        <div class="col-2">
-                                            <div>
-                                                <span>Название тренировки</span>
-                                            </div>
-                                            <div>
-                                                <span>
-                                                    <small>Тип тренировки</small>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>Соколова Д</span>
-                                        </div>
-                                        <div class="col-1 d-flex align-items-center">
-                                            <span>ПН</span>
-                                        </div>
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>14:00</span>
-                                        </div>
-                                    </div>
-                                    <div class="row bg-table rounded mb-2">
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>Соколова Д</span>
-                                        </div>
-                                        <div class="col-3 d-flex align-items-center">
-                                            <span>+7 (ххх) ххх-хх-хх</span>
-                                        </div>
-                                        <div class="col-2">
-                                            <div>
-                                                <span>Название тренировки</span>
-                                            </div>
-                                            <div>
-                                                <span>
-                                                    <small>Тип тренировки</small>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>Соколова Д</span>
-                                        </div>
-                                        <div class="col-1 d-flex align-items-center">
-                                            <span>ПН</span>
-                                        </div>
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>14:00</span>
-                                        </div>
-                                    </div>
-                                    <div class="row bg-table rounded mb-2">
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>Соколова Д</span>
-                                        </div>
-                                        <div class="col-3 d-flex align-items-center">
-                                            <span>+7 (ххх) ххх-хх-хх</span>
-                                        </div>
-                                        <div class="col-2">
-                                            <div>
-                                                <span>Название тренировки</span>
-                                            </div>
-                                            <div>
-                                                <span>
-                                                    <small>Тип тренировки</small>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>Соколова Д</span>
-                                        </div>
-                                        <div class="col-1 d-flex align-items-center">
-                                            <span>ПН</span>
-                                        </div>
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>14:00</span>
-                                        </div>
-                                    </div>
-                                    <div class="row bg-table rounded mb-2">
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>Соколова Д</span>
-                                        </div>
-                                        <div class="col-3 d-flex align-items-center">
-                                            <span>+7 (ххх) ххх-хх-хх</span>
-                                        </div>
-                                        <div class="col-2">
-                                            <div>
-                                                <span>Название тренировки</span>
-                                            </div>
-                                            <div>
-                                                <span>
-                                                    <small>Тип тренировки</small>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>Соколова Д</span>
-                                        </div>
-                                        <div class="col-1 d-flex align-items-center">
-                                            <span>ПН</span>
-                                        </div>
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>14:00</span>
-                                        </div>
-                                    </div>
-                                    <div class="row bg-table rounded mb-2">
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>Соколова Д</span>
-                                        </div>
-                                        <div class="col-3 d-flex align-items-center">
-                                            <span>+7 (ххх) ххх-хх-хх</span>
-                                        </div>
-                                        <div class="col-2">
-                                            <div>
-                                                <span>Название тренировки</span>
-                                            </div>
-                                            <div>
-                                                <span>
-                                                    <small>Тип тренировки</small>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>Соколова Д</span>
-                                        </div>
-                                        <div class="col-1 d-flex align-items-center">
-                                            <span>ПН</span>
-                                        </div>
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>14:00</span>
-                                        </div>
-                                    </div>
-                                    <div class="row bg-table rounded mb-2">
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>Соколова Д</span>
-                                        </div>
-                                        <div class="col-3 d-flex align-items-center">
-                                            <span>+7 (ххх) ххх-хх-хх</span>
-                                        </div>
-                                        <div class="col-2">
-                                            <div>
-                                                <span>Название тренировки</span>
-                                            </div>
-                                            <div>
-                                                <span>
-                                                    <small>Тип тренировки</small>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>Соколова Д</span>
-                                        </div>
-                                        <div class="col-1 d-flex align-items-center">
-                                            <span>ПН</span>
-                                        </div>
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span>14:00</span>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
