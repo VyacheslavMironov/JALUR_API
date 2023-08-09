@@ -15,7 +15,7 @@ class ScheduleController extends Controller
 {
     public function CreateAction(Request $request, ScheduleService $service, ValidateService $validate)
     {
-        $validate->ScheduleValidateAction($request);
+//        $validate->ScheduleValidateAction($request);
         return $service->CreateAction(
             new CreateScheduleDTO(
                 $request->WorkoutId,

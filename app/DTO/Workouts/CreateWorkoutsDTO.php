@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\DTO\Workouts;
 
 final class CreateWorkoutsDTO

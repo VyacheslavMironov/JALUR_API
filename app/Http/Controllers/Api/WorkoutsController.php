@@ -26,7 +26,7 @@ class WorkoutsController extends Controller
             )
         );
     }
-    
+
     public function ShowAction(int $workout_id, WorkoutService $service)
     {
         return $service->ShowAction(

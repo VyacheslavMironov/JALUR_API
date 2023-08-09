@@ -70,13 +70,15 @@
                                                     class="img-fluid rounded-circle">
                                             </div>
                                             <div class="col-7">
-                                                <strong>Миронов Вячеслав</strong>
+                                                <strong>{{ session()->get('first_name') }} {{ session()->get('last_name') }}</strong>
                                                 <div>
-                                                    <small>+7 (ххх) ххх-хх-хх</small>
+                                                    <small{{ session()->get('phone') }}</small>
                                                 </div>
                                             </div>
                                             <div class="col-2 d-flex align-items-center justify-content-center">
-                                                <form action="#" method="post">
+                                                <form action="{{ route('admin.users.logout') }}" method="post">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ session()->get('id') }}">
                                                     <button class="btn p-0" type="submit">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" style="fill: rgb(255 255 255);">
                                                             <path d="M19.002 3h-14c-1.103 0-2 .897-2 2v4h2V5h14v14h-14v-4h-2v4c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.898-2-2-2z"></path>
@@ -93,6 +95,17 @@
                     </div>
                 </div>
                 <div id="content" class="row mt-7-e">
+                    @if (\Session::has('error'))
+                        <div class="toast se-toast mt-2" id="seToastError" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header">
+                                <strong class="me-auto">Ошибка</strong>
+                                <button type="button" id="seToastButtonClose" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body text-white bg-danger">
+                                {!! \Session::get('error') !!}
+                            </div>
+                        </div>
+                    @endif
                     @yield('content')
                 </div>
             </div>

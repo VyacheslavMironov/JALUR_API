@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\PostProfileController;
+use App\Http\Controllers\Admin\PostSchedulesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,8 @@ Route::prefix('admin')->group(function () {
         ->name('admin.schedules');
     Route::get('/schedules/create', [HomeController::class, 'schedules_create'])
         ->name('admin.schedules.create');
+    Route::get('/schedules/update/{id}', [HomeController::class, 'schedules_update'])
+        ->name('admin.schedules.update');
     Route::get('/history/note', [HomeController::class, 'history_note'])
         ->name('admin.history.note');
     Route::get('/history/note/search', [HomeController::class, 'history_note_search'])
@@ -41,4 +45,18 @@ Route::prefix('admin')->group(function () {
         ->name('admin.history.sale');
     Route::get('/users/couch', [HomeController::class, 'user_couches'])
         ->name('admin.users.couch');
+
+    // Авторизация в админке
+    Route::post('/users/auth', [PostProfileController::class, 'auth'])
+        ->name('admin.users.auth');
+    Route::post('/users/logout', [PostProfileController::class, 'logout'])
+        ->name('admin.users.logout');
+    // Создание расписания
+    Route::post('/schedules/create', [PostSchedulesController::class, 'create'])
+        ->name('admin.query.schedules.create');
+    Route::post('/schedules/update', [PostSchedulesController::class, 'update'])
+        ->name('admin.query.schedules.update');
+    Route::get('/schedules/delete/{id}', [PostSchedulesController::class, 'delete'])
+        ->name('admin.query.schedules.delete');
 });
+

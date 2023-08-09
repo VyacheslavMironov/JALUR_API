@@ -30,7 +30,7 @@ final class ScheduleRepository implements IScheduleRepository
 
     public function All()
     {
-        return Schedule::get()->latest();
+        return Schedule::get();
     }
 
     public function Update(UpdateScheduleDTO $context)

@@ -37,7 +37,9 @@ class UserService implements IUserService
 
     public function AuthAction(AuthUserDTO $context)
     {
+
         return $this->repository->Auth($context);
+
     }
 
     public function SearchAction(SearchUserByPhoneDTO $context)

@@ -21,7 +21,8 @@
                     </div>
                     <div class="col-12">
                         <div class="container">
-                            <form action="#" method="post">
+                            <form action="{{ route('admin.users.auth') }}" method="post">
+                                @csrf
                                 <div class="mb-3">
                                     <label for="exampleInputPhone" class="form-label">Введите номер телефона</label>
                                     <input
@@ -29,7 +30,12 @@
                                         name="phone"
                                         class="form-control"
                                         id="exampleInputPhone"
-                                        autocomplete="off">
+                                        autocomplete="off"
+                                        value="{{ old('phone') }}"
+                                        @error('phone') is-invalid @enderror>
+                                    <span>
+                                        @error('phone') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
+                                    </span>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword" class="form-label">Введите пароль администратора</label>
@@ -38,7 +44,12 @@
                                         name="password"
                                         class="form-control"
                                         id="exampleInputPassword"
-                                        autocomplete="off">
+                                        autocomplete="off"
+                                        value="{{ old('password') }}"
+                                        @error('password') is-invalid @enderror>
+                                    <span>
+                                        @error('password') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
+                                    </span>
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" class="btn">Войти</button>
