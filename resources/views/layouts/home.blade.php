@@ -72,7 +72,7 @@
                                             <div class="col-7">
                                                 <strong>{{ session()->get('first_name') }} {{ session()->get('last_name') }}</strong>
                                                 <div>
-                                                    <small{{ session()->get('phone') }}</small>
+                                                    <small>{{ session()->get('phone') }}</small>
                                                 </div>
                                             </div>
                                             <div class="col-2 d-flex align-items-center justify-content-center">

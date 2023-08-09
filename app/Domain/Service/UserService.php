@@ -37,9 +37,17 @@ class UserService implements IUserService
 
     public function AuthAction(AuthUserDTO $context)
     {
-
         return $this->repository->Auth($context);
+    }
 
+    public function AllTypeAction(string $type)
+    {
+        return $this->repository->AllType($type);
+    }
+
+    public function ShowAction(int $id)
+    {
+        return $this->repository->Show($id);
     }
 
     public function SearchAction(SearchUserByPhoneDTO $context)
