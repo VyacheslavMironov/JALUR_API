@@ -14,11 +14,10 @@ final class UpdateUserDTO
     public string|null $Gender;
     public string $Phone;
     public string $Role;
-    public string $Password;
 
     public function __construct(int $Id, string $FirstName, string $LastName, string|null $Image, string|null $Description,
                                 float|null $Weight, float|null $Height, int|null $Age, string|null $Gender, string $Phone,
-                                string $Role, string $Password)
+                                string $Role)
     {
         $this->Id = $Id;
         $this->FirstName = $FirstName;
@@ -31,6 +30,5 @@ final class UpdateUserDTO
         $this->Gender = $Gender;
         $this->Phone = $Phone;
         $this->Role = $Role;
-        $this->Password = $Password;
     }
 }

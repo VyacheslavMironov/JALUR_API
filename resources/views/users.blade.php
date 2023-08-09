@@ -14,31 +14,27 @@
                     {{-- END --}}
                     <div class="container">
                         <div class="row mb-4 mt-2">
-                            <div class="col-5">
+                            <div class="col-7">
                                 <span>Имя фамилия</span>
-                            </div>
-                            <div class="col-2">
-                                <span>Роль</span>
                             </div>
                             <div class="col-4">
                                 <span>Номер телефона</span>
                             </div>
                             <div class="col-1"></div>
                         </div>
-                        <div class="row bg-table rounded mb-2">
-                            <div class="col-5 d-flex align-items-center">
-                                <span>Диана Соколова</span>
-                            </div>
-                            <div class="col-2 d-flex align-items-center">
-                                <span>Роль 1</span>
+                        @foreach($users as $el)
+                            <div class="row bg-table rounded mb-2">
+                            <div class="col-7 d-flex align-items-center">
+                                <span>{{ $el->LastName }} {{ $el->FirstName }}</span>
                             </div>
                             <div class="col-4 d-flex align-items-center">
-                                <span>+7 (ххх) ххх-хх-хх</span>
+                                <span>{{ $el->Phone }}</span>
                             </div>
                             <div class="col-1 d-flex align-items-center">
-                                <a href="{{ route('admin.users.update') }}" class="btn">Изменить</a>
+                                <a href="{{ route('admin.users.update', ['id' => $el->id]) }}" class="btn">Изменить</a>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

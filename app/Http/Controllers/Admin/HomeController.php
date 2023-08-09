@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Domain\Service\RecordsService;
 use App\Domain\Service\ScheduleService;
+use App\Domain\Service\TypeWorkoutsService;
 use App\Domain\Service\UserService;
 use App\Domain\Service\WorkoutService;
 use App\DTO\Schedules\ShowScheduleDTO;
+use App\DTO\TypeWorkouts\ShowTypeWorkoutsDTO;
 use App\DTO\Workouts\ShowWorkoutsDTO;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -77,11 +80,37 @@ class HomeController extends Controller
         return redirect()->route('admin.login');
     }
 
-    public function history_note()
+    public function history_note(RecordsService $service, UserService $userService,
+                                 ScheduleService $scheduleService, TypeWorkoutsService $typeWorkoutsService)
     {
         if (session()->get("id"))
         {
-            return view('history_note');
+            $arr = array();
+            foreach($service->AllAction() as $el)
+            {
+                $user = $userService->ShowAction($el->UserId);
+                $schedule = $scheduleService->ShowAction(
+                    new ShowScheduleDTO($el->ScheduleId)
+                );
+                $typeWorkout = $typeWorkoutsService->ShowAction(
+                    new ShowTypeWorkoutsDTO($schedule->id)
+                );
+                $couch = $userService->ShowAction($schedule->Couche);
+                $item = [
+                    'first_name' => $user->FirstName,
+                    'last_name' => $user->LastName,
+                    'phone' => $user->Phone,
+                    'schedule' => $schedule->Name,
+                    'schedule_type' => $typeWorkout->Name,
+                    'couch' => $couch->FirstName .' '. $couch->LastName,
+                    'week_day' => $schedule->WeekDay,
+                    'start_time' => $schedule->StartTime,
+                ];
+                array_push($arr, $item);
+            }
+            return view('history_note', [
+                'recodrs' => $arr
+            ]);
         }
         return redirect()->route('admin.login');
     }
@@ -95,47 +124,60 @@ class HomeController extends Controller
         return redirect()->route('admin.login');
     }
 
-    public function training()
+    public function training(WorkoutService $service)
     {
         if (session()->get("id"))
         {
-            return view('training');
+            return view('training', [
+                'workouts' => $service->AllAction()
+            ]);
         }
         return redirect()->route('admin.login');
     }
 
-    public function training_type()
+    public function training_type(TypeWorkoutsService $service)
     {
         if (session()->get("id"))
         {
-            return view('training_type');
+            return view('training_type', [
+                'type_workout' => $service->AllAction()
+            ]);
         }
         return redirect()->route('admin.login');
     }
 
-    public function training_create()
+    public function training_create(UserService $service, TypeWorkoutsService $typeWorkoutervice)
     {
         if (session()->get("id"))
         {
-            return view('training_create');
+            return view('training_create', [
+                'workout' => $service->AllTypeAction('Тренер'),
+                'type_workout' => $typeWorkoutervice->AllAction()
+            ]);
         }
         return redirect()->route('admin.login');
     }
 
-    public function users()
+    public function users(UserService $service)
     {
         if (session()->get("id"))
         {
-            return view('users');
+
+            return view('users', [
+                'users' => $service->AllTypeAction('Клиент')
+            ]);
         }
         return redirect()->route('admin.login');
     }
 
-    public function users_update()
+    public function users_update(int $id, UserService $service)
     {
         if (session()->get("id"))
         {
-            return view('users_update');
+
+            return view('users_update',[
+                'user' => $service->ShowAction($id)
+            ]);
         }
         return redirect()->route('admin.login');
     }
@@ -149,11 +191,13 @@ class HomeController extends Controller
         return redirect()->route('admin.login');
     }
 
-    public function user_couches()
+    public function user_couches(UserService $service)
     {
         if (session()->get("id"))
         {
-            return view('user_couches');
+            return view('user_couches', [
+                'users' => $service->AllTypeAction('Тренер')
+            ]);
         }
         return redirect()->route('admin.login');
     }

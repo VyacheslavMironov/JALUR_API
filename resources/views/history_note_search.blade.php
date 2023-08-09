@@ -25,45 +25,51 @@
                                             <h3 class="text-center">Поиск</h3>
                                         </div>
                                         <div class="col-8 mx-auto">
-                                            <form>
+                                            <form action="#" method="get">
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="mb-3">
                                                             <label class="form-label">Поиск по имени</label>
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" name="first_name" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="mb-3">
                                                             <label class="form-label">Поиск по фамилии</label>
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" name="last_name" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="mb-3">
+                                                        <label class="form-label">Поиск по номеру телефона</label>
+                                                        <input type="tel" name="phone" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="mb-3">
                                                         <label class="form-label">Поиск по тренеру</label>
-                                                        <input type="text" class="form-control">
+                                                        <input type="text"  class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="mb-3">
                                                         <label class="form-label">Поиск по дню недели</label>
-                                                        <select class="form-select" aria-label="Default select example">
-                                                            <option value="Понедельник">Понедельник</option>
-                                                            <option value="Вторник">Вторник</option>
-                                                            <option value="Среда">Среда</option>
-                                                            <option value="Четверг">Четверг</option>
-                                                            <option value="Пятница">Пятница</option>
-                                                            <option value="Суббота">Суббота</option>
-                                                            <option value="Восскресенье">Восскресенье</option>
+                                                        <select class="form-select" name="week_day" aria-label="Default select example">
+                                                            <option value="Пн">Понедельник</option>
+                                                            <option value="Вт">Вторник</option>
+                                                            <option value="Ср">Среда</option>
+                                                            <option value="Чт">Четверг</option>
+                                                            <option value="Пт">Пятница</option>
+                                                            <option value="Сб">Суббота</option>
+                                                            <option value="Вс">Восскресенье</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="mb-3">
                                                         <label class="form-label">Поиск по названию тренировки</label>
-                                                        <input type="text" class="form-control">
+                                                        <input type="text"  class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="mt-3"></div>

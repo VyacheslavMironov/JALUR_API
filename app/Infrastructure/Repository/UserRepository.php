@@ -42,6 +42,16 @@ final class UserRepository implements IUserRepository
         );
     }
 
+    public function AllType(string $type)
+    {
+        return User::where('Role', $type)->get();
+    }
+
+    public function Show(int $id)
+    {
+        return User::find($id);
+    }
+
     public function UpdateCode(CodeUserDTO $context, string $new_password)
     {
         $model = User::where('Phone', $context->Phone)->get();
@@ -65,7 +75,6 @@ final class UserRepository implements IUserRepository
         $model->Gender = $context->Gender;
         $model->Phone = $context->Phone;
         $model->Role = $context->Role;
-        $model->Password = $context->Password;
         $model->save();
         return $model;
     }
@@ -74,6 +83,6 @@ final class UserRepository implements IUserRepository
     {
         return User::deleteBearerTocken(
             User::find($context->Id)
-        ); 
+        );
     }
 }

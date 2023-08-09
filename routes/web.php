@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostProfileController;
 use App\Http\Controllers\Admin\PostSchedulesController;
+use App\Http\Controllers\Admin\PostUserController;
+use App\Http\Controllers\Admin\PostTypeWorkoutController;
+use App\Http\Controllers\Admin\PostWorkoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +42,7 @@ Route::prefix('admin')->group(function () {
         ->name('admin.training.create');
     Route::get('/users', [HomeController::class, 'users'])
         ->name('admin.users');
-    Route::get('/users/update', [HomeController::class, 'users_update'])
+    Route::get('/users/update/{id}', [HomeController::class, 'users_update'])
         ->name('admin.users.update');
     Route::get('/history/sale', [HomeController::class, 'history_sale'])
         ->name('admin.history.sale');
@@ -58,5 +61,18 @@ Route::prefix('admin')->group(function () {
         ->name('admin.query.schedules.update');
     Route::get('/schedules/delete/{id}', [PostSchedulesController::class, 'delete'])
         ->name('admin.query.schedules.delete');
+    // Обновление пользователя
+    Route::post('/users/update', [PostUserController::class, 'update'])
+        ->name('admin.query.users.update');
+    // Удаление типа тренировки
+    Route::get('/type/workout/delete/{id}', [PostTypeWorkoutController::class, 'delete'])
+        ->name('admin.query.type.workout.delete');
+    Route::post('/type/workout/create', [PostTypeWorkoutController::class, 'create'])
+        ->name('admin.query.type.workout.create');
+    // Запросы для тренировок
+    Route::get('/workout/delete/{id}', [PostWorkoutController::class, 'delete'])
+        ->name('admin.query.workout.delete');
+    Route::post('/workout/create', [PostWorkoutController::class, 'create'])
+        ->name('admin.query.workout.create');
 });
 
