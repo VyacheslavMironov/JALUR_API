@@ -24,24 +24,30 @@
                             <div class="col-2">
                             </div>
                         </div>
-                        <div class="row bg-table rounded mb-2 p-2">
-                            <div class="col-2 d-flex align-items-center">
-                                <img
-                                    src="https://sun9-52.userapi.com/impg/0-K-o0gbAkL_zIdc70Y0hH9s9VUkSCL93mdLSg/B267CGHPvO0.jpg?size=1013x737&quality=95&sign=6445aeae562b7ecc4044e400cac725fc&type=album"
-                                    alt="Имя Фамилия"
-                                    id="user-img-admin"
-                                    class="img-fluid rounded">
+                        @foreach($users as $el)
+                            <div class="row bg-table rounded mb-2 p-2">
+                                <div class="col-2 d-flex align-items-center">
+                                    <img
+                                        @if ($el->Image)
+                                            src="{{ $el->Image }}"
+                                        @else
+                                            src="https://sun9-52.userapi.com/impg/0-K-o0gbAkL_zIdc70Y0hH9s9VUkSCL93mdLSg/B267CGHPvO0.jpg?size=1013x737&quality=95&sign=6445aeae562b7ecc4044e400cac725fc&type=album"
+                                        @endif
+                                        alt="{{ $el->LastName }} {{ $el->FirstName }}"
+                                        id="user-img-admin"
+                                        class="img-fluid rounded">
+                                </div>
+                                <div class="col-4 d-flex align-items-center">
+                                    <span>{{ $el->LastName }} {{ $el->FirstName }}</span>
+                                </div>
+                                <div class="col-4 d-flex align-items-center">
+                                    <span>{{ $el->Phone }}</span>
+                                </div>
+                                <div class="col-2 d-flex align-items-center justify-content-end">
+                                    <a href="{{ route('admin.users.update', ['id' => $el->id]) }}" class="btn">Подробнее</a>
+                                </div>
                             </div>
-                            <div class="col-4 d-flex align-items-center">
-                                <span>Диана Соколова</span>
-                            </div>
-                            <div class="col-4 d-flex align-items-center">
-                                <span>+7 (ххх) ххх-хх-хх</span>
-                            </div>
-                            <div class="col-2 d-flex align-items-center justify-content-end">
-                                <a href="{{ route('admin.users.update') }}" class="btn">Подробнее</a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

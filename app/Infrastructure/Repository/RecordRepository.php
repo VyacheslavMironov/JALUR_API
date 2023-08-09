@@ -27,7 +27,7 @@ final class RecordRepository implements IRecordsRepository
 
     public function All()
     {
-        return Record::get()->latest();
+        return Record::get();
     }
 
     public function Update(UpdateRecordsDTO $context)
