@@ -14,7 +14,7 @@
                     {{-- END --}}
                     <div class="container">
                         <div class="col-8 mx-auto">
-                            <form action="{{ route('admin.query.users.update') }}" method="post">
+                            <form action="{{ route('admin.query.users.update') }}" enctype="multipart/form-data" method="post">
                                 @csrf
                                 <div class="col-12 mb-5 mt-3">
                                     <h4 class="text-center">Добавить</h4>
@@ -25,6 +25,11 @@
                                         class="form-control"
                                         name="id"
                                         value="{{ $user->id }}">
+                                    <input
+                                        type="hidden"
+                                        class="form-control"
+                                        name="image_old"
+                                        value="{{ $user->Image }}">
                                     <input
                                         type="hidden"
                                         class="form-control"
@@ -64,6 +69,7 @@
                                 <div class="mb-3">
                                     <label class="form-label">Номер телефона</label>
                                     <input
+                                        id="exampleInputTelephone"
                                         type="tel"
                                         class="form-control"
                                         name="phone"
@@ -93,7 +99,7 @@
                                     <div class="col-6">
                                         <div class="mb-3">
                                             <label class="form-label">Роль</label>
-                                            <select class="form-select" name="role" aria-label="Default select example" @error('role') is-invalid @enderror>
+                                            <select id="role" onchange="roleRead()" class="form-select" name="role" aria-label="Default select example" @error('role') is-invalid @enderror>
                                                 <option @if ($user->Role == null) selected @endif>Нажмите что бы выбрать</option>
                                                 <option @if ($user->Role == 'Администратор') selected @endif value="Администратор">Администратор</option>
                                                 <option @if ($user->Role == 'Тренер') selected @endif value="Тренер">Тренер</option>
@@ -103,6 +109,20 @@
                                                 @error('role') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
                                             </span>
                                         </div>
+                                    </div>
+                                </div>
+                                <div id="user-couch-data" class="row d-none">
+                                    <div class="mb-3">
+                                        <label class="form-label">Фотография</label>
+                                        <input
+                                            type="file"
+                                            class="form-control"
+                                            name="image"
+                                            autocomplete="off">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Описание тренера</label>
+                                        <textarea class="form-control" name="description" cols="30" rows="10" autocomplete="off">{{ $user->Description }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -147,4 +167,32 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#exampleInputTelephone")
+                .mask("+7 (999) 999-99-99");
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#exampleInputTelephone")
+                .mask("+7 (999) 999-99-99");
+        });
+        function roleRead()
+        {
+            let selectedOption = $('#role').val();
+            if (selectedOption == 'Тренер')
+            {
+                document.getElementById('user-couch-data').classList.remove('d-none');
+                document.getElementById('user-couch-data').classList.add('d-block');
+            }
+            else
+            {
+                document.getElementById('user-couch-data').classList.remove('d-block');
+                document.getElementById('user-couch-data').classList.add('d-none');
+            }
+        }
+
+    </script>
 @endsection

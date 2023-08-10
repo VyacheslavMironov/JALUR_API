@@ -65,650 +65,750 @@
                                     <div class="mt-2"></div>
                                 </div>
                             </div>
-                            {{-- Тело --}}
-                            @foreach ($schedules as $el)
-                                @if (mb_substr($el['StartTime'], 0, 5) == '09:00')
-                                    <div class="mt-1 d-flex justify-content-around">
-                                        <div class="flex-8 card text-center align-items-center bg-table">
-                                        <span class="mt-3">
-                                            <b>{{ mb_substr($el['StartTime'], 0, 5) }}</b>
-                                        </span>
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Пн')
-                                                <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Вт')
-                                                <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Ср')
-                                                <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Чт')
-                                                <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Пт')
-                                                <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Сб')
-                                                <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Вс')
-                                                <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="mt-1 d-flex justify-content-around">
-                                        <div class="flex-8 card text-center align-items-center bg-table">
-                                        <span class="mt-3">
-                                            <b>09:00</b>
-                                        </span>
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                    </div>
-                                @endif
-                                @if (mb_substr($el['StartTime'], 0, 5) == '10:00')
-                                        <div class="mt-1 d-flex justify-content-around">
-                                            <div class="flex-8 card text-center align-items-center bg-table">
-                                        <span class="mt-3">
-                                            <b>{{ mb_substr($el['StartTime'], 0, 5) }}</b>
-                                        </span>
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Пн')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Вт')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Ср')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Чт')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Пт')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Сб')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Вс')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    @else
-                                        <div class="mt-1 d-flex justify-content-around">
-                                            <div class="flex-8 card text-center align-items-center bg-table">
-                                        <span class="mt-3">
-                                            <b>10:00</b>
-                                        </span>
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        </div>
-                                    @endif
-                                @if (mb_substr($el['StartTime'], 0, 5) == '16:00')
-                                        <div class="mt-1 d-flex justify-content-around">
-                                            <div class="flex-8 card text-center align-items-center bg-table">
-                                        <span class="mt-3">
-                                            <b>{{ mb_substr($el['StartTime'], 0, 5) }}</b>
-                                        </span>
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Пн')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Вт')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Ср')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Чт')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Пт')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Сб')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Вс')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    @else
-                                        <div class="mt-1 d-flex justify-content-around">
-                                            <div class="flex-8 card text-center align-items-center bg-table">
-                                        <span class="mt-3">
-                                            <b>16:00</b>
-                                        </span>
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        </div>
-                                    @endif
-                                @if (mb_substr($el['StartTime'], 0, 5) == '17:00')
-                                        <div class="mt-1 d-flex justify-content-around">
-                                            <div class="flex-8 card text-center align-items-center bg-table">
-                                        <span class="mt-3">
-                                            <b>{{ mb_substr($el['StartTime'], 0, 5) }}</b>
-                                        </span>
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Пн')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Вт')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Ср')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Чт')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Пт')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Сб')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Вс')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    @else
-                                        <div class="mt-1 d-flex justify-content-around">
-                                            <div class="flex-8 card text-center align-items-center bg-table">
-                                        <span class="mt-3">
-                                            <b>17:00</b>
-                                        </span>
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        </div>
-                                    @endif
-                                @if (mb_substr($el['StartTime'], 0, 5) == '18:00')
-                                    <div class="mt-1 d-flex justify-content-around">
-                                        <div class="flex-8 card text-center align-items-center bg-table">
-                                    <span class="mt-3">
-                                        <b>{{ mb_substr($el['StartTime'], 0, 5) }}</b>
-                                    </span>
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Пн')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Вт')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Ср')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Чт')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Пт')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Сб')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Вс')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="mt-1 d-flex justify-content-around">
-                                        <div class="flex-8 card text-center align-items-center bg-table">
-                                    <span class="mt-3">
-                                        <b>18:00</b>
-                                    </span>
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                    </div>
-                                @endif
-                                @if (mb_substr($el['StartTime'], 0, 5) == '18:30')
-                                    <div class="mt-1 d-flex justify-content-around">
-                                        <div class="flex-8 card text-center align-items-center bg-table">
-                                    <span class="mt-3">
-                                        <b>{{ mb_substr($el['StartTime'], 0, 5) }}</b>
-                                    </span>
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Пн')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Вт')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Ср')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Чт')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Пт')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Сб')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Вс')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="mt-1 d-flex justify-content-around">
-                                        <div class="flex-8 card text-center align-items-center bg-table">
-                                    <span class="mt-3">
-                                        <b>18:30</b>
-                                    </span>
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                    </div>
-                                @endif
-                                @if (mb_substr($el['StartTime'], 0, 5) == '19:00')
-                                    <div class="mt-1 d-flex justify-content-around">
-                                        <div class="flex-8 card text-center align-items-center bg-table">
-                                    <span class="mt-3">
-                                        <b>{{ mb_substr($el['StartTime'], 0, 5) }}</b>
-                                    </span>
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Пн')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Вт')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Ср')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Чт')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Пт')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Сб')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body">
-                                            @if ($el['WeekDay'] == 'Вс')
-                                                <span>
-                                                <b>{{ $el['Name']['Name'] }}</b><br>
-                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="mt-1 d-flex justify-content-around">
-                                        <div class="flex-8 card text-center align-items-center bg-table">
-                                    <span class="mt-3">
-                                        <b>19:00</b>
-                                    </span>
-                                        </div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                    </div>
-                                @endif
-                                @if (mb_substr($el['StartTime'], 0, 5) == '20:00')
-                                        <div class="mt-1 d-flex justify-content-around">
-                                            <div class="flex-8 card text-center align-items-center bg-table">
-                                        <span class="mt-3">
-                                            <b>{{ mb_substr($el['StartTime'], 0, 5) }}</b>
-                                        </span>
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Пн')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Вт')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Ср')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Чт')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Пт')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Сб')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Вс')
-                                                    <span>
-                                                    <b>{{ $el['Name']['Name'] }}</b><br>
-                                                    <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    @else
-                                        <div class="mt-1 d-flex justify-content-around">
-                                            <div class="flex-8 card text-center align-items-center bg-table">
-                                        <span class="mt-3">
-                                            <b>20:00</b>
-                                        </span>
-                                            </div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                            <div class="flex-8 card text-center align-items-center bg-table-body"></div>
-                                        </div>
-                                    @endif
 
-                            @endforeach
+                            <!-- 09:00 -->
+                            <div class="mt-1 d-flex justify-content-around">
+                                <div class="flex-8 card text-center align-items-center bg-table">
+                                <span class="mt-3">
+                                    <b>09:00</b>
+                                </span>
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '09:00')
+                                        @if ($el['WeekDay'] == 'Пн')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '09:00')
+                                        @if ($el['WeekDay'] == 'Вт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '09:00')
+                                        @if ($el['WeekDay'] == 'Ср')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '09:00')
+                                        @if ($el['WeekDay'] == 'Чт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '09:00')
+                                        @if ($el['WeekDay'] == 'Пт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '09:00')
+                                        @if ($el['WeekDay'] == 'Сб')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '09:00')
+                                        @if ($el['WeekDay'] == 'Вс')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                            </div>
+
+                            <!-- 10:00 -->
+                            <div class="mt-1 d-flex justify-content-around">
+                                <div class="flex-8 card text-center align-items-center bg-table">
+                                <span class="mt-3">
+                                    <b>10:00</b>
+                                </span>
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '10:00')
+                                        @if ($el['WeekDay'] == 'Пн')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '10:00')
+                                        @if ($el['WeekDay'] == 'Вт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '10:00')
+                                        @if ($el['WeekDay'] == 'Ср')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '10:00')
+                                        @if ($el['WeekDay'] == 'Чт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '10:00')
+                                        @if ($el['WeekDay'] == 'Пт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '10:00')
+                                        @if ($el['WeekDay'] == 'Сб')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '10:00')
+                                        @if ($el['WeekDay'] == 'Вс')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                            </div>
+
+                            <!-- 16:00 -->
+                            <div class="mt-1 d-flex justify-content-around">
+                                <div class="flex-8 card text-center align-items-center bg-table">
+                                <span class="mt-3">
+                                    <b>16:00</b>
+                                </span>
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '16:00')
+                                        @if ($el['WeekDay'] == 'Пн')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '16:00')
+                                        @if ($el['WeekDay'] == 'Вт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '16:00')
+                                        @if ($el['WeekDay'] == 'Ср')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '16:00')
+                                        @if ($el['WeekDay'] == 'Чт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '16:00')
+                                        @if ($el['WeekDay'] == 'Пт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '16:00')
+                                        @if ($el['WeekDay'] == 'Сб')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '16:00')
+                                        @if ($el['WeekDay'] == 'Вс')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                            </div>
+
+                            <!-- 17:00 -->
+                            <div class="mt-1 d-flex justify-content-around">
+                                <div class="flex-8 card text-center align-items-center bg-table">
+                                <span class="mt-3">
+                                    <b>17:00</b>
+                                </span>
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '17:00')
+                                        @if ($el['WeekDay'] == 'Пн')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '17:00')
+                                        @if ($el['WeekDay'] == 'Вт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '17:00')
+                                        @if ($el['WeekDay'] == 'Ср')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '17:00')
+                                        @if ($el['WeekDay'] == 'Чт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '17:00')
+                                        @if ($el['WeekDay'] == 'Пт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '17:00')
+                                        @if ($el['WeekDay'] == 'Сб')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '17:00')
+                                        @if ($el['WeekDay'] == 'Вс')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                            </div>
+
+                            <!-- 18:00 -->
+                            <div class="mt-1 d-flex justify-content-around">
+                                <div class="flex-8 card text-center align-items-center bg-table">
+                                <span class="mt-3">
+                                    <b>18:00</b>
+                                </span>
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '18:00')
+                                        @if ($el['WeekDay'] == 'Пн')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '18:00')
+                                        @if ($el['WeekDay'] == 'Вт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '18:00')
+                                        @if ($el['WeekDay'] == 'Ср')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '18:00')
+                                        @if ($el['WeekDay'] == 'Чт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '18:00')
+                                        @if ($el['WeekDay'] == 'Пт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '18:00')
+                                        @if ($el['WeekDay'] == 'Сб')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '18:00')
+                                        @if ($el['WeekDay'] == 'Вс')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                            </div>
+
+                            <!-- 18:30 -->
+                            <div class="mt-1 d-flex justify-content-around">
+                                <div class="flex-8 card text-center align-items-center bg-table">
+                                <span class="mt-3">
+                                    <b>18:30</b>
+                                </span>
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '18:30')
+                                        @if ($el['WeekDay'] == 'Пн')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '18:30')
+                                        @if ($el['WeekDay'] == 'Вт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '18:30')
+                                        @if ($el['WeekDay'] == 'Ср')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '18:30')
+                                        @if ($el['WeekDay'] == 'Чт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '18:30')
+                                        @if ($el['WeekDay'] == 'Пт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '18:30')
+                                        @if ($el['WeekDay'] == 'Сб')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '18:30')
+                                        @if ($el['WeekDay'] == 'Вс')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                            </div>
+
+                            <!-- 19:00 -->
+                            <div class="mt-1 d-flex justify-content-around">
+                                <div class="flex-8 card text-center align-items-center bg-table">
+                                <span class="mt-3">
+                                    <b>19:00</b>
+                                </span>
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '19:00')
+                                        @if ($el['WeekDay'] == 'Пн')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '19:00')
+                                        @if ($el['WeekDay'] == 'Вт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '19:00')
+                                        @if ($el['WeekDay'] == 'Ср')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '19:00')
+                                        @if ($el['WeekDay'] == 'Чт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '19:00')
+                                        @if ($el['WeekDay'] == 'Пт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '19:00')
+                                        @if ($el['WeekDay'] == 'Сб')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '19:00')
+                                        @if ($el['WeekDay'] == 'Вс')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                            </div>
+
+                            <!-- 20:00 -->
+                            <div class="mt-1 d-flex justify-content-around">
+                                <div class="flex-8 card text-center align-items-center bg-table">
+                                <span class="mt-3">
+                                    <b>20:00</b>
+                                </span>
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '20:00')
+                                        @if ($el['WeekDay'] == 'Пн')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '20:00')
+                                        @if ($el['WeekDay'] == 'Вт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '20:00')
+                                        @if ($el['WeekDay'] == 'Ср')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '20:00')
+                                        @if ($el['WeekDay'] == 'Чт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '20:00')
+                                        @if ($el['WeekDay'] == 'Пт')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '20:00')
+                                        @if ($el['WeekDay'] == 'Сб')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                                <div class="flex-8 card text-center align-items-center bg-table-body">
+                                @foreach ($schedules as $el)
+                                    @if (mb_substr($el['StartTime'], 0, 5) == '20:00')
+                                        @if ($el['WeekDay'] == 'Вс')
+                                            <span>
+                                                <b>{{ $el['Name']['Name'] }}</b><br>
+                                                <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
+                                            </span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                </div>
+                            </div>
                         </div>
                    @endif
                 </div>

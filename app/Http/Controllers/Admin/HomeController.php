@@ -22,11 +22,7 @@ class HomeController extends Controller
     }
     public function login()
     {
-        if (session()->get("id"))
-        {
-            return back();
-        }
-        return view('login');
+        return view('login', ["title" => "Расписание"]);
     }
     public function schedules(ScheduleService $service, WorkoutService $workoutService, User $userService)
     {
@@ -44,8 +40,10 @@ class HomeController extends Controller
                     'EndTime' => $item->EndTime
                 ]);
             }
+//            return $arr;
             return view('schedules', [
-                "schedules" => $arr
+                "schedules" => $arr,
+                "title" => "Расписание"
             ]);
         }
         return redirect()->route('admin.login');
@@ -60,7 +58,8 @@ class HomeController extends Controller
                 'couch' => $userService::get(),
                 'schedule' => [],
                 'schedule_id' => null,
-                'form' => 'admin.query.schedules.create'
+                'form' => 'admin.query.schedules.create',
+                "title" => "Расписание"
             ]);
         }
         return redirect()->route('admin.login');
@@ -74,13 +73,14 @@ class HomeController extends Controller
                 'couch' => $userService::get(),
                 'schedule' => $service->ShowAction(new ShowScheduleDTO($id)),
                 'schedule_id' => $id,
-                'form' => 'admin.query.schedules.update'
+                'form' => 'admin.query.schedules.update',
+                "title" => "Расписание"
             ]);
         }
         return redirect()->route('admin.login');
     }
 
-    public function history_note(RecordsService $service, UserService $userService,
+    public function history_note(RecordsService $service, UserService $userService, WorkoutService $workoutService,
                                  ScheduleService $scheduleService, TypeWorkoutsService $typeWorkoutsService)
     {
         if (session()->get("id"))
@@ -92,15 +92,19 @@ class HomeController extends Controller
                 $schedule = $scheduleService->ShowAction(
                     new ShowScheduleDTO($el->ScheduleId)
                 );
-                $typeWorkout = $typeWorkoutsService->ShowAction(
-                    new ShowTypeWorkoutsDTO($schedule->id)
+                $workout = $workoutService->ShowAction(
+                    new ShowWorkoutsDTO($schedule->WorkoutId)
                 );
-                $couch = $userService->ShowAction($schedule->Couche);
+                $typeWorkout = $typeWorkoutsService->ShowAction(
+                    new ShowTypeWorkoutsDTO($workout->TypeWorkoutId)
+                );
+                $couch = $userService->ShowAction($schedule->Couch);
+
                 $item = [
                     'first_name' => $user->FirstName,
                     'last_name' => $user->LastName,
                     'phone' => $user->Phone,
-                    'schedule' => $schedule->Name,
+                    'schedule' => $workout->Name,
                     'schedule_type' => $typeWorkout->Name,
                     'couch' => $couch->FirstName .' '. $couch->LastName,
                     'week_day' => $schedule->WeekDay,
@@ -109,7 +113,8 @@ class HomeController extends Controller
                 array_push($arr, $item);
             }
             return view('history_note', [
-                'recodrs' => $arr
+                'recodrs' => $arr,
+                "title" => "История записей"
             ]);
         }
         return redirect()->route('admin.login');
@@ -119,7 +124,9 @@ class HomeController extends Controller
     {
         if (session()->get("id"))
         {
-            return view('history_note_search');
+            return view('history_note_search', [
+                "title" => "История записей"
+            ]);
         }
         return redirect()->route('admin.login');
     }
@@ -129,7 +136,8 @@ class HomeController extends Controller
         if (session()->get("id"))
         {
             return view('training', [
-                'workouts' => $service->AllAction()
+                'workouts' => $service->AllAction(),
+                "title" => "Занятия"
             ]);
         }
         return redirect()->route('admin.login');
@@ -140,7 +148,8 @@ class HomeController extends Controller
         if (session()->get("id"))
         {
             return view('training_type', [
-                'type_workout' => $service->AllAction()
+                'type_workout' => $service->AllAction(),
+                "title" => "Занятия"
             ]);
         }
         return redirect()->route('admin.login');
@@ -152,7 +161,8 @@ class HomeController extends Controller
         {
             return view('training_create', [
                 'workout' => $service->AllTypeAction('Тренер'),
-                'type_workout' => $typeWorkoutervice->AllAction()
+                'type_workout' => $typeWorkoutervice->AllAction(),
+                "title" => "Занятия"
             ]);
         }
         return redirect()->route('admin.login');
@@ -164,7 +174,8 @@ class HomeController extends Controller
         {
 
             return view('users', [
-                'users' => $service->AllTypeAction('Клиент')
+                'users' => $service->AllTypeAction('Клиент'),
+                "title" => "Пользователи"
             ]);
         }
         return redirect()->route('admin.login');
@@ -176,7 +187,8 @@ class HomeController extends Controller
         {
 
             return view('users_update',[
-                'user' => $service->ShowAction($id)
+                'user' => $service->ShowAction($id),
+                "title" => "Пользователи"
             ]);
         }
         return redirect()->route('admin.login');
@@ -186,7 +198,9 @@ class HomeController extends Controller
     {
         if (session()->get("id"))
         {
-            return view('history_sale');
+            return view('history_sale', [
+                "title" => "История покупок"
+            ]);
         }
         return redirect()->route('admin.login');
     }
@@ -196,7 +210,8 @@ class HomeController extends Controller
         if (session()->get("id"))
         {
             return view('user_couches', [
-                'users' => $service->AllTypeAction('Тренер')
+                'users' => $service->AllTypeAction('Тренер'),
+                "title" => "Тренера"
             ]);
         }
         return redirect()->route('admin.login');
