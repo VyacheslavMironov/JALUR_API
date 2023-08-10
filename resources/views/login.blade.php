@@ -29,7 +29,7 @@
                                         type="tel"
                                         name="phone"
                                         class="form-control"
-                                        id="exampleInputPhone"
+                                        id="exampleInputTelephone"
                                         autocomplete="off"
                                         value="{{ old('phone') }}"
                                         @error('phone') is-invalid @enderror>
@@ -61,4 +61,11 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#exampleInputTelephone")
+                .mask("+7 (999) 999-99-99");
+        });
+    </script>
 @endsection

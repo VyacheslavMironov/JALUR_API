@@ -8,4 +8,5 @@ interface IHistoryWorkoutsService
     public function AllAction();
     public function UpdateAction(\App\DTO\HistoryWorkouts\UpdateHistoryWorkoutsDTO $context);
     public function DeleteAction(\App\DTO\HistoryWorkouts\DeleteHistoryWorkoutsDTO $context);
+    public function FilterAction(\App\DTO\HistoryWorkouts\FilterHistoryWorkoutDTO $context);
 }

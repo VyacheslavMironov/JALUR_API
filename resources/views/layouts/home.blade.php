@@ -6,6 +6,7 @@
     <title>JALUR</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     @vite(['resources/css/app.css'])
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 </head>
 <body>
     <main class="container-fluid">
@@ -32,22 +33,22 @@
                     <div class="menu-body mt-5 p-3">
                         <ul>
                             <li class="mt-3">
-                                <a href="{{ route('admin.schedules') }}" class="nav-item btn bx-button-menu menu-active">Расписание</a>
+                                <a href="{{ route('admin.schedules') }}" class="nav-item btn bx-button-menu @if($title == 'Расписание') menu-active @endif">Расписание</a>
                             </li>
                             <li class="mt-3">
-                                <a href="{{ route('admin.history.note') }}" class="nav-item btn bx-button-menu">История записей</a>
+                                <a href="{{ route('admin.history.note') }}" class="nav-item btn bx-button-menu @if($title == 'История записей') menu-active @endif">История записей</a>
                             </li>
                             <li class="mt-3">
-                                <a href="{{ route('admin.training') }}" class="nav-item btn bx-button-menu">Занятия</a>
+                                <a href="{{ route('admin.training') }}" class="nav-item btn bx-button-menu @if($title == 'Занятия') menu-active @endif">Занятия</a>
                             </li>
                             <li class="mt-3">
-                                <a href="{{ route('admin.users') }}" class="nav-item btn bx-button-menu">Пользователи</a>
+                                <a href="{{ route('admin.users') }}" class="nav-item btn bx-button-menu @if($title == 'Пользователи') menu-active @endif">Пользователи</a>
                             </li>
                             <li class="mt-3">
-                                <a href="{{ route('admin.history.sale') }}" class="nav-item btn bx-button-menu">История покупок</a>
+                                <a href="{{ route('admin.history.sale') }}" class="nav-item btn bx-button-menu @if($title == 'История покупок') menu-active @endif">История покупок</a>
                             </li>
                             <li class="mt-3">
-                                <a href="{{ route('admin.users.couch') }}" class="nav-item btn bx-button-menu">Тренера</a>
+                                <a href="{{ route('admin.users.couch') }}" class="nav-item btn bx-button-menu @if($title == 'Тренера') menu-active @endif">Тренера</a>
                             </li>
                         </ul>
                     </div>
@@ -94,7 +95,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="content" class="row mt-7-e">
+                <div id="content" class="row mt-7-e mb-5">
                     @if (\Session::has('error'))
                         <div class="toast se-toast mt-2" id="seToastError" role="alert" aria-live="assertive" aria-atomic="true">
                             <div class="toast-header">
@@ -107,6 +108,7 @@
                         </div>
                     @endif
                     @yield('content')
+                    <div class="mt-5"><br></div>
                 </div>
             </div>
         </div>

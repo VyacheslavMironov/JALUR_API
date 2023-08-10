@@ -121,3 +121,17 @@ form input{
 .bg-table{
     background-color: #F6F6F6;
 }
+.bg-table-body{
+    background-color: #977585;
+}
+.bg-table-body span{
+    color: #F6F6F6!important;
+}
+.schedules .card{
+    border-radius: 0%;
+    box-shadow: none;
+}
+.flex-8{
+    width: 12.3%;
+    height: 5em;
+}

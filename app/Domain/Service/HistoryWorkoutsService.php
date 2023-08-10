@@ -2,6 +2,7 @@
 namespace App\Domain\Service;
 
 use App\DTO\HistoryWorkouts\CreateHistoryWorkoutsDTO;
+use App\DTO\HistoryWorkouts\FilterHistoryWorkoutDTO;
 use App\DTO\HistoryWorkouts\ShowHistoryWorkoutsDTO;
 use App\DTO\HistoryWorkouts\UpdateHistoryWorkoutsDTO;
 use App\DTO\HistoryWorkouts\DeleteHistoryWorkoutsDTO;
@@ -40,5 +41,10 @@ class HistoryWorkoutsService implements IHistoryWorkoutsService
     public function DeleteAction(DeleteHistoryWorkoutsDTO $context)
     {
         return $this->repository->Delete($context);
+    }
+
+    public function FilterAction(FilterHistoryWorkoutDTO $context)
+    {
+        return $this->repository->Filter($context);
     }
 }
