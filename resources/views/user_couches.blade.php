@@ -29,7 +29,7 @@
                                 <div class="col-2 d-flex align-items-center">
                                     <img
                                         @if ($el->Image)
-                                            src="{{ $el->Image }}"
+                                            src="{{ asset('/storage/'.$el->Image) }}"
                                         @else
                                             src="https://sun9-52.userapi.com/impg/0-K-o0gbAkL_zIdc70Y0hH9s9VUkSCL93mdLSg/B267CGHPvO0.jpg?size=1013x737&quality=95&sign=6445aeae562b7ecc4044e400cac725fc&type=album"
                                         @endif
