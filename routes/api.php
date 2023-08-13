@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\TypeWorkoutsController;
 use App\Http\Controllers\Api\WorkoutsController;
 use App\Http\Controllers\Api\ScheduleController;
+use App\Http\Controllers\Api\ScheduleTimeController;
 use App\Http\Controllers\Api\RecordController;
 use App\Http\Controllers\Api\HistoryWorkoutsController;
 
@@ -63,6 +64,17 @@ Route::prefix('schedule')->group(function () {
         Route::post('create', [ScheduleController::class, 'CreateAction']);
         Route::get('delete/{schedule_id}', [ScheduleController::class, 'DeleteAction']);
         Route::post('update', [ScheduleController::class, 'UpdateAction']);
+    });
+    // Запросы к апи времени расписания
+    Route::prefix('time')->group(function () {
+        Route::post('show/{id}', [ScheduleTimeController::class, 'show']);
+        Route::post('/', [ScheduleTimeController::class, 'all']);
+        // Запросы с Bearer токеном
+        Route::middleware('auth:sanctum')->group(function (){
+            Route::post('create', [ScheduleTimeController::class, 'create']);
+            Route::post('update', [ScheduleTimeController::class, 'update']);
+            Route::post('delete/{id}', [ScheduleTimeController::class, 'delete']);
+        });
     });
 });
 

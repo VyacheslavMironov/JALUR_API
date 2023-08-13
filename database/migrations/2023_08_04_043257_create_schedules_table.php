@@ -17,9 +17,8 @@ return new class extends Migration
             $table->integer('Couch');
             $table->enum('WeekDay',
                 ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']);
-            $table->date('StartDate');
-            $table->time('StartTime');
-            $table->time('EndTime');
+            $table->boolean('Active');
+            $table->integer('ScheduleTimeId');
             $table->timestamps();
             $table->foreign('WorkoutId')
                 ->references('id')
@@ -28,6 +27,10 @@ return new class extends Migration
             $table->foreign('Couch')
                 ->references('id')
                 ->on('users')
+                ->onDelete('cascade');
+            $table->foreign('ScheduleTimeId')
+                ->references('id')
+                ->on('schedule_times')
                 ->onDelete('cascade');
         });
     }

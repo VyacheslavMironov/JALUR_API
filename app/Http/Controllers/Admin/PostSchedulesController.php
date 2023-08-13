@@ -15,15 +15,14 @@ class PostSchedulesController extends Controller
 {
     public function create(ScheduleCreateRequest $request, ScheduleService $service)
     {
-        $context = $request->validated();
+        $request->validated();
         $service->CreateAction(
             new CreateScheduleDTO(
                 $request['workoutId'],
                 $request['couch'],
                 $request['weekDay'],
-                date('d-m-Y'),
-                $request['startTime'],
-                $request['endTime']
+                $request['active'],
+                $request['scheduleTimeId']
             )
         );
         return redirect()->route('admin.schedules');
@@ -31,16 +30,15 @@ class PostSchedulesController extends Controller
 
     public function update(ScheduleUpdateRequest $request, ScheduleService $service)
     {
-        $context = $request->validated();
+        $request->validated();
         $service->UpdateAction(
             new UpdateScheduleDTO(
                 $request['id'],
                 $request['workoutId'],
                 $request['couch'],
                 $request['weekDay'],
-                date('d-m-Y'),
-                $request['startTime'],
-                $request['endTime']
+                $request['active'],
+                $request['scheduleTimeId']
             )
         );
         return redirect()->route('admin.schedules');

@@ -32,15 +32,14 @@ class HomeController extends Controller
             foreach ($service->AllAction() as $item)
             {
                 array_push($arr, [
-                    'Id' => $item->id,
-                    'Name' => $workoutService->ShowAction(new ShowWorkoutsDTO($item->WorkoutId)),
-                    'Couch' => $userService::find($item->Couch),
-                    'WeekDay' => $item->WeekDay,
-                    'StartTime' => $item->StartTime,
-                    'EndTime' => $item->EndTime
+                    // 'Id' => $item->id,
+                    // 'Name' => $workoutService->ShowAction(new ShowWorkoutsDTO($item->WorkoutId)),
+                    // 'Couch' => $userService::find($item->Couch),
+                    // 'WeekDay' => $item->WeekDay,
+                    // 'Active' => $item->Active,
+                    // 'ScheduleTimeId' => $item->ScheduleTimeId
                 ]);
             }
-//            return $arr;
             return view('schedules', [
                 "schedules" => $arr,
                 "title" => "Расписание"
