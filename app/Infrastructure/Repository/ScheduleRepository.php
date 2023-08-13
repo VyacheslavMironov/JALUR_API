@@ -16,9 +16,8 @@ final class ScheduleRepository implements IScheduleRepository
         $model->WorkoutId = $context->WorkoutId;
         $model->Couch = $context->Couch;
         $model->WeekDay = $context->WeekDay;
-        $model->StartDate = $context->StartDate;
-        $model->StartTime = $context->StartTime;
-        $model->EndTime = $context->EndTime;
+        $model->Active = $context->Active;
+        $model->ScheduleTimeId = $context->ScheduleTimeId;
         $model->save();
         return $model;
     }
@@ -39,9 +38,8 @@ final class ScheduleRepository implements IScheduleRepository
         $model->WorkoutId = $context->WorkoutId;
         $model->Couch = $context->Couch;
         $model->WeekDay = $context->WeekDay;
-        $model->StartDate = $context->StartDate;
-        $model->StartTime = $context->StartTime;
-        $model->EndTime = $context->EndTime;
+        $model->Active = $context->Active;
+        $model->ScheduleTimeId = $context->ScheduleTimeId;
         $model->save();
         return $model;
     }
