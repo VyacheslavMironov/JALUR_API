@@ -35,14 +35,14 @@ class HomeController extends Controller
             $arr = array();
             foreach ($service->AllAction() as $item)
             {
-                array_push($arr, [
+                // array_push($arr, [
                     // 'Id' => $item->id,
                     // 'Name' => $workoutService->ShowAction(new ShowWorkoutsDTO($item->WorkoutId)),
                     // 'Couch' => $userService::find($item->Couch),
                     // 'WeekDay' => $item->WeekDay,
                     // 'Active' => $item->Active,
                     // 'ScheduleTimeId' => $item->ScheduleTimeId
-                ]);
+                // ]);
             }
             return view('schedules', [
                 "schedules" => $arr
