@@ -10,20 +10,20 @@ use App\DTO\Schedules\CreateScheduleDTO;
 use App\DTO\Schedules\ShowScheduleDTO;
 use App\DTO\Schedules\UpdateScheduleDTO;
 use App\DTO\Schedules\DeleteScheduleDTO;
+use App\Http\Requests\ScheduleCreateRequest;
 
 class ScheduleController extends Controller
 {
-    public function CreateAction(Request $request, ScheduleService $service, ValidateService $validate)
+    public function CreateAction(ScheduleCreateRequest $request, ScheduleService $service, ValidateService $validate)
     {
-//        $validate->ScheduleValidateAction($request);
+        $request->validated();
         return $service->CreateAction(
             new CreateScheduleDTO(
-                $request->WorkoutId,
-                $request->Couch,
-                $request->WeekDay,
-                $request->StartDate,
-                $request->StartTime,
-                $request->EndTime
+                $request['workoutId'],
+                $request['couch'],
+                $request['weekDay'],
+                $request['active'],
+                $request['scheduleTimeId']
             )
         );
     }
@@ -49,9 +49,8 @@ class ScheduleController extends Controller
                 $request->WorkoutId,
                 $request->Couch,
                 $request->WeekDay,
-                $request->StartDate,
-                $request->StartTime,
-                $request->EndTime
+                $request->Active,
+                $request->ScheduleTimeId
             )
         );
     }
