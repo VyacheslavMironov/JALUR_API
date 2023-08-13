@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Domain\Service\RecordsService;
 use App\Domain\Service\ScheduleService;
+use App\Domain\Service\ScheduleTimeService;
 use App\Domain\Service\TypeWorkoutsService;
 use App\Domain\Service\UserService;
 use App\Domain\Service\WorkoutService;
@@ -49,7 +50,7 @@ class HomeController extends Controller
         return redirect()->route('admin.login');
     }
 
-    public function schedules_create(WorkoutService $workoutService, User $userService)
+    public function schedules_create(WorkoutService $workoutService, User $userService, ScheduleTimeService $scheduleTimeService)
     {
         if (session()->get("id"))
         {
@@ -57,6 +58,7 @@ class HomeController extends Controller
                 'workout' => $workoutService->AllAction(),
                 'couch' => $userService::get(),
                 'schedule' => [],
+                'schedule_time' => $scheduleTimeService->AllAction(),
                 'schedule_id' => null,
                 'form' => 'admin.query.schedules.create',
                 "title" => "Расписание"
@@ -75,6 +77,18 @@ class HomeController extends Controller
                 'schedule_id' => $id,
                 'form' => 'admin.query.schedules.update',
                 "title" => "Расписание"
+            ]);
+        }
+        return redirect()->route('admin.login');
+    }
+
+    public function schedules_time(ScheduleTimeService $service)
+    {
+        if (session()->get("id"))
+        {
+            return view('schedules_time', [
+                'schedule_times' => $service->AllAction(),
+                "title" => "Расписание время"
             ]);
         }
         return redirect()->route('admin.login');

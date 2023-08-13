@@ -21,7 +21,7 @@ class PostSchedulesController extends Controller
                 $request['workoutId'],
                 $request['couch'],
                 $request['weekDay'],
-                $request['active'],
+                true,
                 $request['scheduleTimeId']
             )
         );

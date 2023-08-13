@@ -135,3 +135,11 @@ form input{
     width: 12.3%;
     height: 5em;
 }
+
+table thead, table tbody{
+    background-color: #75646c;
+    color: #fff;
+}
+table tbody tr td, table tbody tr th{
+    color: #fff!important;
+}

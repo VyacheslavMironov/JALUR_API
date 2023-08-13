@@ -25,7 +25,6 @@ class ScheduleCreateRequest extends FormRequest
             'workoutId' => ['required'],
             'couch' => ['required'],
             'weekDay' => ['required', 'min:2', 'max:2'],
-            'active' => ['required'],
             'scheduleTimeId' => ['required'],
         ];
     }
@@ -36,7 +35,6 @@ class ScheduleCreateRequest extends FormRequest
             'workoutId.required' => 'Выберите тренировку!',
             'couch.required' => 'Выберите тренера!',
             'weekDay.required' => 'Укажите день недели!',
-            'active.required' => 'Укажите актуальность расписания!',
             'scheduleTimeId.required' => 'Выберите время начала тренировки!',
 
             'weekDay.min' => 'День недели должен быть указан в формате: Хх',

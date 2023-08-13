@@ -11,10 +11,7 @@
                     <div class="col-8 d-flex">
                         <a href="{{ route('admin.schedules') }}" class="btn btn-panel m-2">Список</a>
                         <a href="{{ route('admin.schedules.create') }}" class="btn btn-panel btn-panel-active m-2">Добавить</a>
-                    </div>
-                    <div class="col-2"></div>
-                    <div class="col-2">
-                        <button class="btn w-100">Фильтр</button>
+                        <a href="{{ route('admin.schedules.time') }}" class="btn btn-panel m-2">Время</a>
                     </div>
                 </div>
             </div>
@@ -23,6 +20,7 @@
                     <div class="container">
                         <form action="{{ route($form) }}" method="post">
                             @csrf
+                            <input type="hidden" name="active" value="1">
                             <div class="row">
                                 <div class="col-12 mb-5 mt-3">
                                     <h3 class="text-center">Добавить</h3>
@@ -182,37 +180,22 @@
                                                 @error('couch') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
                                             </span>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Укажите время начала</label>
-                                                    <input
-                                                        type="time"
-                                                        name="startTime"
-                                                        class="form-control"
-                                                        autocomplete="off"
-                                                        @if ($schedule) value="{{ $schedule->StartTime }}" @endif
-                                                        @error('startTime') is-invalid @enderror>
-                                                    <span class="text-center">
-                                                        @error('startTime') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Укажите конечное время</label>
-                                                    <input
-                                                        type="time"
-                                                        name="endTime"
-                                                        class="form-control"
-                                                        autocomplete="off"
-                                                        @if ($schedule) value="{{ $schedule->EndTime }}" @endif
-                                                        @error('endTime') is-invalid @enderror>
-                                                    <span class="text-center">
-                                                        @error('endTime') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
-                                                    </span>
-                                                </div>
-                                            </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Укажите время начала</label>
+                                            <select
+                                                class="form-select"
+                                                name="scheduleTimeId"
+                                                aria-label="Default select example"
+                                                @error('scheduleTimeId') is-invalid @enderror>
+                                                @foreach($schedule_time as $el)
+                                                    <option value="{{ $el->id }}">
+                                                        {{ mb_substr($el->StartTime, 0, 5) }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-center">
+                                                @error('scheduleTimeId') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
+                                            </span>
                                         </div>
                                         <div class="mt-3"></div>
                                         <div class="d-flex justify-content-end">

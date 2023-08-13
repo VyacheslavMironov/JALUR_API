@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostProfileController;
 use App\Http\Controllers\Admin\PostSchedulesController;
+use App\Http\Controllers\Admin\PostScheduleTimeController;
 use App\Http\Controllers\Admin\PostUserController;
 use App\Http\Controllers\Admin\PostTypeWorkoutController;
 use App\Http\Controllers\Admin\PostWorkoutController;
@@ -54,6 +55,10 @@ Route::prefix('admin')->group(function () {
         ->name('admin.users.auth');
     Route::post('/users/logout', [PostProfileController::class, 'logout'])
         ->name('admin.users.logout');
+
+        // Создание времени для расписания
+    Route::get('/schedules/time', [HomeController::class, 'schedules_time'])
+        ->name('admin.schedules.time');
     // Создание расписания
     Route::post('/schedules/create', [PostSchedulesController::class, 'create'])
         ->name('admin.query.schedules.create');
@@ -61,18 +66,27 @@ Route::prefix('admin')->group(function () {
         ->name('admin.query.schedules.update');
     Route::get('/schedules/delete/{id}', [PostSchedulesController::class, 'delete'])
         ->name('admin.query.schedules.delete');
+
     // Обновление пользователя
     Route::post('/users/update', [PostUserController::class, 'update'])
         ->name('admin.query.users.update');
+
     // Удаление типа тренировки
     Route::get('/type/workout/delete/{id}', [PostTypeWorkoutController::class, 'delete'])
         ->name('admin.query.type.workout.delete');
     Route::post('/type/workout/create', [PostTypeWorkoutController::class, 'create'])
         ->name('admin.query.type.workout.create');
+
     // Запросы для тренировок
     Route::get('/workout/delete/{id}', [PostWorkoutController::class, 'delete'])
         ->name('admin.query.workout.delete');
     Route::post('/workout/create', [PostWorkoutController::class, 'create'])
         ->name('admin.query.workout.create');
+
+    // Запросы для времени расписания
+    Route::post('/schedule/time/create', [PostScheduleTimeController::class, 'create'])
+        ->name('admin.query.schedule.time.create');
+    Route::post('/schedule/time/delete', [PostScheduleTimeController::class, 'delete'])
+        ->name('admin.query.schedule.time.delete');
 });
 

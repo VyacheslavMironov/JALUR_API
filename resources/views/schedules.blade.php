@@ -11,6 +11,7 @@
                     <div class="col-12 d-flex">
                         <a href="{{ route('admin.schedules') }}" class="btn btn-panel btn-panel-active m-2">Список</a>
                         <a href="{{ route('admin.schedules.create') }}" class="btn btn-panel m-2">Добавить</a>
+                        <a href="{{ route('admin.schedules.time') }}" class="btn btn-panel m-2">Время</a>
                     </div>
                 </div>
             </div>
