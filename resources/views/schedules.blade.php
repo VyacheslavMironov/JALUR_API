@@ -68,72 +68,84 @@
                             </div>
                             {{-- Тело --}}
                             @if(count($schedules) > 0)
-                                @foreach ($schedules as $el)
-                                    @if (mb_substr($el['StartTime'], 0, 5) == '09:00')
+                                @foreach ($schedules as $time)
                                         <div class="mt-1 d-flex justify-content-around">
                                             <div class="flex-8 card text-center align-items-center bg-table">
                                             <span class="mt-3">
-                                                <b>{{ mb_substr($el['StartTime'], 0, 5) }}</b>
+                                                <b>{{ mb_substr($time['ScheduleTime'], 0, 5) }}</b>
                                             </span>
                                             </div>
                                             <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Пн')
-                                                    <span>
-                                                        <b>{{ $el['Name']['Name'] }}</b><br>
-                                                        <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                    </span>
-                                                @endif
+                                                @foreach ($time['Values'] as $value)
+                                                    @if ($value['WeekDay'] == 'Пн')
+                                                        <span>
+                                                            <b>{{ $value['Name'] }}</b><br>
+                                                            <small>{{ mb_substr($value['Couch']['FirstName'], 0, 1)}}. {{ $value['Couch']['LastName'] }}</small>
+                                                        </span>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                             <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Вт')
-                                                    <span>
-                                                        <b>{{ $el['Name']['Name'] }}</b><br>
-                                                        <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                    </span>
-                                                @endif
+                                                @foreach ($time['Values'] as $value)
+                                                    @if ($value['WeekDay'] == 'Вт')
+                                                        <span>
+                                                            <b>{{ $value['Name'] }}</b><br>
+                                                            <small>{{ mb_substr($value['Couch']['FirstName'], 0, 1)}}. {{ $value['Couch']['LastName'] }}</small>
+                                                        </span>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                             <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Ср')
-                                                    <span>
-                                                        <b>{{ $el['Name']['Name'] }}</b><br>
-                                                        <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                    </span>
-                                                @endif
+                                                @foreach ($time['Values'] as $value)
+                                                    @if ($value['WeekDay'] == 'Ср')
+                                                        <span>
+                                                            <b>{{ $value['Name'] }}</b><br>
+                                                            <small>{{ mb_substr($value['Couch']['FirstName'], 0, 1)}}. {{ $value['Couch']['LastName'] }}</small>
+                                                        </span>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                             <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Чт')
-                                                    <span>
-                                                        <b>{{ $el['Name']['Name'] }}</b><br>
-                                                        <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                    </span>
-                                                @endif
+                                                @foreach ($time['Values'] as $value)
+                                                    @if ($value['WeekDay'] == 'Чт')
+                                                        <span>
+                                                            <b>{{ $value['Name'] }}</b><br>
+                                                            <small>{{ mb_substr($value['Couch']['FirstName'], 0, 1)}}. {{ $value['Couch']['LastName'] }}</small>
+                                                        </span>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                             <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Пт')
-                                                    <span>
-                                                        <b>{{ $el['Name']['Name'] }}</b><br>
-                                                        <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                    </span>
-                                                @endif
+                                                @foreach ($time['Values'] as $value)
+                                                    @if ($value['WeekDay'] == 'Пт')
+                                                        <span>
+                                                            <b>{{ $value['Name'] }}</b><br>
+                                                            <small>{{ mb_substr($value['Couch']['FirstName'], 0, 1)}}. {{ $value['Couch']['LastName'] }}</small>
+                                                        </span>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                             <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Сб')
-                                                    <span>
-                                                        <b>{{ $el['Name']['Name'] }}</b><br>
-                                                        <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                    </span>
-                                                @endif
+                                                @foreach ($time['Values'] as $value)
+                                                    @if ($value['WeekDay'] == 'Сб')
+                                                        <span>
+                                                            <b>{{ $value['Name'] }}</b><br>
+                                                            <small>{{ mb_substr($value['Couch']['FirstName'], 0, 1)}}. {{ $value['Couch']['LastName'] }}</small>
+                                                        </span>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                             <div class="flex-8 card text-center align-items-center bg-table-body">
-                                                @if ($el['WeekDay'] == 'Вс')
-                                                    <span>
-                                                        <b>{{ $el['Name']['Name'] }}</b><br>
-                                                        <small>{{ mb_substr($el['Couch']['FirstName'], 0, 1)}}. {{ $el['Couch']['LastName'] }}</small>
-                                                    </span>
-                                                @endif
+                                                @foreach ($time['Values'] as $value)
+                                                    @if ($value['WeekDay'] == 'Вс')
+                                                        <span>
+                                                            <b>{{ $value['Name'] }}</b><br>
+                                                            <small>{{ mb_substr($value['Couch']['FirstName'], 0, 1)}}. {{ $value['Couch']['LastName'] }}</small>
+                                                        </span>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                         </div>
-                                    @endif
                                 @endforeach
                             @endif
                         </div>

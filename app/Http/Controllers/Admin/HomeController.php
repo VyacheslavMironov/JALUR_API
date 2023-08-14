@@ -25,23 +25,49 @@ class HomeController extends Controller
     {
         return view('login', ["title" => "Расписание"]);
     }
-    public function schedules(ScheduleService $service, WorkoutService $workoutService, User $userService)
+    public function schedules(ScheduleService $service, WorkoutService $workoutService, User $userService, ScheduleTimeService $scheduleTimeService)
     {
         if (session()->get("id"))
         {
             $arr = array();
-            foreach ($service->AllAction() as $item)
+            foreach ($scheduleTimeService->AllAction() as $item)
             {
-                // array_push($arr, [
-                    // 'Id' => $item->id,
-                    // 'Name' => $workoutService->ShowAction(new ShowWorkoutsDTO($item->WorkoutId)),
-                    // 'Couch' => $userService::find($item->Couch),
-                    // 'WeekDay' => $item->WeekDay,
-                    // 'Active' => $item->Active,
-                    // 'ScheduleTimeId' => $item->ScheduleTimeId
-                // ]);
+                foreach ($service->AllAction() as $schedule)
+                {
+                    if ($item->id == $schedule->ScheduleTimeId)
+                    {
+                        if ($schedule->Active)
+                        {
+                            $f = 0;
+                            for ($i = 0; count($arr) > $i; $i++)
+                            {
+                                if ($arr[$i]['ScheduleTime'] == $item->StartTime)
+                                {
+                                    array_push($arr[$i]['Values'], [
+                                        'Id' => $schedule->id,
+                                        'Name' => $workoutService->ShowAction(new ShowWorkoutsDTO($schedule->WorkoutId))->Name,
+                                        'Couch' => $userService::find($schedule->Couch),
+                                        'WeekDay' => $schedule->WeekDay,
+                                    ]);
+                                    $f = 1;
+                                }
+                            }
+                            if ($f == 0)
+                            {
+                                array_push($arr, [
+                                    'ScheduleTime' => $item->StartTime,
+                                    'Values' => [[
+                                        'Id' => $schedule->id,
+                                        'Name' => $workoutService->ShowAction(new ShowWorkoutsDTO($schedule->WorkoutId))->Name,
+                                        'Couch' => $userService::find($schedule->Couch),
+                                        'WeekDay' => $schedule->WeekDay,
+                                    ]]
+                                ]);
+                            }
+                        }
+                    }
+                }
             }
-//            return $arr;
             return view('schedules', [
                 "schedules" => $arr,
                 "title" => "Расписание"
