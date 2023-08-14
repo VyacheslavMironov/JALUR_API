@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="wrapper">
-        <div class="container">
+        <div class="">
             <div class="col-12 mb-4 mt-4">
                 <h3 class="text-center">Расписание</h3>
             </div>
@@ -24,7 +24,7 @@
                         </small>
                     @else
                         <div class="schedules">
-                            <div class="d-flex justify-content-around">
+                            <div id="weks" class="d-flex justify-content-around">
                                 <div class="flex-8 card text-center align-items-center bg-table">
                                     <div class="mt-2"></div>
                                     <strong class="w-100 d-block">Время</strong>

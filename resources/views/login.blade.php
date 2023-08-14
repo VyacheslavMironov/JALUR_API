@@ -3,7 +3,7 @@
 @section('content')
     <div class="wrapper">
         <div class="full-window d-flex align-items-center">
-            <div class="col-3 mx-auto">
+            <div class="col-xxl-3 col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-10 mx-auto">
                 <div class="card w-100 p-4">
                     <div class="col-12 mt-5">
                         <div class="col-4 mx-auto">

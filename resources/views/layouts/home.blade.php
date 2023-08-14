@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JALUR</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    @vite(['resources/css/app.css'])
+    @vite(['resources/css/app.css', 'resources/css/app.min.css'])
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 </head>
 <body>
     <main class="container-fluid">
         <div class="row row-container">
-            <div class="menu col-lg-3">
+            <div class="menu col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-2">
                 <div id="fx-menu">
                     <div class="card bx-top-menu p-3">
                         <div class="row h-100">
-                            <div class="col-5">
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12">
                                 <img
                                     src="https://sun9-52.userapi.com/impg/0-K-o0gbAkL_zIdc70Y0hH9s9VUkSCL93mdLSg/B267CGHPvO0.jpg?size=1013x737&quality=95&sign=6445aeae562b7ecc4044e400cac725fc&type=album"
                                     alt="logo JALUR"
                                     id="logo-img"
                                     class="img-fluid rounded-circle">
                             </div>
-                            <div class="col-7 d-flex align-items-center">
-                                <h3 class="text-light">
+                            <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-sm-12 d-flex align-items-center">
+                                <h3 id="menu-text" class="text-light">
                                     Панель<br>
                                     администратора
                                 </h3>
@@ -54,12 +54,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-9 mt-3 row-component">
+            <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9 mt-3 col-sm-10 row-component">
                 <div class="header">
                     <div class="row">
-                        <div class="col-8"></div>
-                        <div class="col-4">
-                            <div class="position-fixed w-20-e">
+                        <div class="col-xxl-8 col-xl-7 col-lg-8 col-md-6"></div>
+                        <div class="col-xxl-4 col-xl-5 col-lg-4 col-md-6">
+                            <div class="position-fixed w-20-e user-admin">
                                 <div class="card w-100 p-2">
                                     <div class="col-12">
                                         <div class="row">

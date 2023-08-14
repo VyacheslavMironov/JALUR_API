@@ -1,0 +1,129 @@
+@media(min-width: 1430px) and (max-width: 1670px) {
+    #logo-img {
+        position: relative;
+        height: 85%;
+        top: 0.5em;
+    }
+}
+
+@media(min-width: 1200px) and (max-width: 1450px) {
+    .card span, 
+    .card span b, 
+    .card span strong{
+        font-size:92%;
+    }
+    .menu h3#menu-text{
+        font-size: 124%;
+    }
+    #logo-img {
+        position: relative;
+        height: 84px;
+        top: 1.2em;
+    }
+    .menu-body ul{
+        position: relative;
+        right: 1em;
+    }
+    .menu-body ul li{
+        margin: 0 auto;
+    }
+    .menu-body ul li a{
+        width: 100%;
+    }
+    .bg-table strong{
+        font-size: 80%;
+    }
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .card span, 
+    .card span b, 
+    .card span strong{
+        font-size: 90%;
+    }
+    #logo-img {
+        position: relative;
+        height: 60%;
+        top: 1.2em;
+    }
+    .menu h3#menu-text{
+        font-size: 132%;
+    }
+    .menu-body ul{
+        position: relative;
+        right: 1em;
+    }
+    .menu-body ul li{
+        margin: 0 auto;
+    }
+    .menu-body ul li a{
+        width: 100%;
+    }
+    .bg-table strong{
+        font-size: 80%;
+    }
+    .user-admin{
+        right: 1.5em;
+    }
+}
+
+/* Portrait tablets and small desktops */
+@media(min-width: 768px) and (max-width: 991px) {
+    .card span, 
+    .card span b, 
+    .card span strong{
+        font-size: 80%;
+    }
+    #fx-menu .bx-top-menu {
+        height: 30%;
+    }
+    #logo-img{
+        position: relative;
+        top: 1.2em;
+        width: 60%;
+        height: 85%;
+        display: block;
+        margin: 0 auto;
+    }
+    .menu h3#menu-text{
+        font-size: x-large;
+        text-align: center;
+        position: relative;
+        left: 5%;
+    }
+    .menu-body{
+        padding: 0!important;
+    }
+    .menu-body ul{
+        position: relative;
+        right: 1em;
+    }
+    .menu-body ul li{
+        margin: 0 auto;
+    }
+    .menu-body ul li a{
+        width: 100%;
+    }
+    .bg-table strong{
+        font-size: 72%;
+    }
+    .user-admin{
+        right: 1.5em;
+    }
+}
+
+/* Landscape phones and portrait tablets */
+@media(max-width: 767px) {
+    .card span, 
+    .card span b, 
+    .card span strong{
+        font-size: 74%;
+    }
+    .bg-table strong{
+        font-size: 68%;
+    }
+    .user-admin{
+        right: 1.5em;
+    }
+}

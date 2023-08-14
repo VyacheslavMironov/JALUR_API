@@ -143,3 +143,6 @@ table thead, table tbody{
 table tbody tr td, table tbody tr th{
     color: #fff!important;
 }
+#weks .bg-table{
+    height: max-content;
+}
