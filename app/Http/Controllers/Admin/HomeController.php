@@ -8,12 +8,18 @@ use App\Domain\Service\ScheduleTimeService;
 use App\Domain\Service\TypeWorkoutsService;
 use App\Domain\Service\UserService;
 use App\Domain\Service\WorkoutService;
+use App\Domain\Service\HallService;
 use App\DTO\Schedules\ShowScheduleDTO;
 use App\DTO\TypeWorkouts\ShowTypeWorkoutsDTO;
 use App\DTO\Workouts\ShowWorkoutsDTO;
+use App\DTO\Hall\ShowHallDTO;
+use App\DTO\Schedules\ShowHallScheduleDTO;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+
+use function PHPUnit\Framework\isNull;
 
 class HomeController extends Controller
 {
@@ -25,14 +31,46 @@ class HomeController extends Controller
     {
         return view('login', ["title" => "Расписание"]);
     }
-    public function schedules(ScheduleService $service, WorkoutService $workoutService, User $userService, ScheduleTimeService $scheduleTimeService)
+
+    public function hall_shadule(HallService $service)
     {
         if (session()->get("id"))
         {
+            return view('hall_schedules', [
+                'halls' => $service->AllAction(),
+                "title" => "Расписание"
+            ]);
+        }
+        return redirect()->route('admin.login');
+    }
+
+    public function schedules(int $hallId, ScheduleService $service, WorkoutService $workoutService, User $userService, ScheduleTimeService $scheduleTimeService)
+    {
+        
+        if (session()->get("id"))
+        {
+            $calendar = [];
+            $currentDate = Carbon::now();
+            // Количество дней в текущем месяце
+            $numberOfDays = $currentDate->daysInMonth;
+
+            for ($day = 1; $day <= $numberOfDays; $day++) {
+                $date = Carbon::createFromDate(
+                    $currentDate->year, 
+                    $currentDate->month, 
+                    $day
+                );
+                array_push($calendar, [
+                    'Date' => $date->toDateString(),
+                    'DayOfWeek' => $date->format('l'),
+                    'IsWeekend' => $date->isWeekend()
+                ]);
+            }
+
             $arr = array();
             foreach ($scheduleTimeService->AllAction() as $item)
             {
-                foreach ($service->AllAction() as $schedule)
+                foreach ($service->ShowbyHallAction(new ShowHallScheduleDTO($hallId)) as $schedule)
                 {
                     if ($item->id == $schedule->ScheduleTimeId)
                     {
@@ -70,17 +108,19 @@ class HomeController extends Controller
             }
             return view('schedules', [
                 "schedules" => $arr,
+                "calendar" => $calendar,
                 "title" => "Расписание"
             ]);
         }
-        return redirect()->route('admin.login');
+        // return redirect()->route('admin.login');
     }
 
-    public function schedules_create(WorkoutService $workoutService, User $userService, ScheduleTimeService $scheduleTimeService)
+    public function schedules_create(HallService $hallService, WorkoutService $workoutService, User $userService, ScheduleTimeService $scheduleTimeService)
     {
         if (session()->get("id"))
         {
             return view('schedules_create', [
+                'hall' => $hallService->AllAction(),
                 'workout' => $workoutService->AllAction(),
                 'couch' => $userService::get(),
                 'schedule' => [],
@@ -92,11 +132,12 @@ class HomeController extends Controller
         }
         return redirect()->route('admin.login');
     }
-    public function schedules_update(int $id, ScheduleService $service, WorkoutService $workoutService, User $userService)
+    public function schedules_update(int $id, HallService $hallService, ScheduleService $service, WorkoutService $workoutService, User $userService)
     {
         if (session()->get("id"))
         {
             return view('schedules_create', [
+                'hall' => $hallService->AllAction(),
                 'workout' => $workoutService->AllAction(),
                 'couch' => $userService::get(),
                 'schedule' => $service->ShowAction(new ShowScheduleDTO($id)),
@@ -255,5 +296,25 @@ class HomeController extends Controller
             ]);
         }
         return redirect()->route('admin.login');
+    }
+
+    public function hall(HallService $service)
+    {
+        return view('hall', [
+            'halls' => $service->AllAction(),
+            'title' => "Залы"
+        ]);
+    }
+
+    public function hall_show(int $id, HallService $service)
+    {
+        return view('hall_show', [
+            'hall' => $service->ShowAction(
+                new ShowHallDTO(
+                    $id
+                )
+            ),
+            'title' => "Залы"
+        ]);
     }
 }

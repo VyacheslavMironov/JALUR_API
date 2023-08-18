@@ -23,6 +23,7 @@ class ScheduleUpdateRequest extends FormRequest
     {
         return [
             'id' => ['required'],
+            'hallId' => ['required'],
             'workoutId' => ['required'],
             'couch' => ['required'],
             'weekDay' => ['required', 'min:2', 'max:2'],
@@ -34,6 +35,7 @@ class ScheduleUpdateRequest extends FormRequest
     {
         return [
             'id.required' => 'Запись не выбрана!',
+            'hallId.required' => 'Выберите зал!',
             'workoutId.required' => 'Выберите тренировку!',
             'couch.required' => 'Выберите тренера!',
             'weekDay.required' => 'Укажите день недели!',

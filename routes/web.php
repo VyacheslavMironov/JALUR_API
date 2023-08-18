@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PostScheduleTimeController;
 use App\Http\Controllers\Admin\PostUserController;
 use App\Http\Controllers\Admin\PostTypeWorkoutController;
 use App\Http\Controllers\Admin\PostWorkoutController;
+use App\Http\Controllers\Api\HallController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,68 +26,119 @@ Route::get('/', [HomeController::class, 'index'])
 Route::prefix('admin')->group(function () {
     Route::get('/login', [HomeController::class, 'login'])
         ->name('admin.login');
-    Route::get('/schedules', [HomeController::class, 'schedules'])
+
+    // Расписание
+    Route::prefix('schedules')->group(function () {
+        //
+        Route::get('/create', [HomeController::class, 'schedules_create'])
+            ->name('admin.schedules.create');
+        Route::get('/update/{id}', [HomeController::class, 'schedules_update'])
+            ->name('admin.schedules.update');
+
+        // Создание расписания
+        Route::post('/create', [PostSchedulesController::class, 'create'])
+            ->name('admin.query.schedules.create');
+        Route::post('/update', [PostSchedulesController::class, 'update'])
+            ->name('admin.query.schedules.update');
+        Route::get('/delete/{id}', [PostSchedulesController::class, 'delete'])
+            ->name('admin.query.schedules.delete');
+
+        // Время расписания
+        Route::prefix('time')->group(function () {
+            // Создание времени для расписания
+            Route::get('/', [HomeController::class, 'schedules_time'])
+                ->name('admin.schedules.time');
+            // Запросы для времени расписания
+            Route::post('/create', [PostScheduleTimeController::class, 'create'])
+                ->name('admin.query.schedule.time.create');
+            Route::post('/delete', [PostScheduleTimeController::class, 'delete'])
+                ->name('admin.query.schedule.time.delete');
+        });
+        //
+        Route::get('/{hallId}', [HomeController::class, 'schedules'])
         ->name('admin.schedules');
-    Route::get('/schedules/create', [HomeController::class, 'schedules_create'])
-        ->name('admin.schedules.create');
-    Route::get('/schedules/update/{id}', [HomeController::class, 'schedules_update'])
-        ->name('admin.schedules.update');
-    Route::get('/history/note', [HomeController::class, 'history_note'])
-        ->name('admin.history.note');
-    Route::get('/history/note/search', [HomeController::class, 'history_note_search'])
-        ->name('admin.history.note.search');
-    Route::get('/training', [HomeController::class, 'training'])
-        ->name('admin.training');
-    Route::get('/training/type', [HomeController::class, 'training_type'])
-        ->name('admin.training.type');
-    Route::get('/training/create', [HomeController::class, 'training_create'])
-        ->name('admin.training.create');
-    Route::get('/users', [HomeController::class, 'users'])
-        ->name('admin.users');
-    Route::get('/users/update/{id}', [HomeController::class, 'users_update'])
-        ->name('admin.users.update');
-    Route::get('/history/sale', [HomeController::class, 'history_sale'])
-        ->name('admin.history.sale');
-    Route::get('/users/couch', [HomeController::class, 'user_couches'])
-        ->name('admin.users.couch');
+    });
+    
+    // История
+    Route::prefix('history')->group(function () {
+        Route::get('/sale', [HomeController::class, 'history_sale'])
+            ->name('admin.history.sale');
 
-    // Авторизация в админке
-    Route::post('/users/auth', [PostProfileController::class, 'auth'])
-        ->name('admin.users.auth');
-    Route::post('/users/logout', [PostProfileController::class, 'logout'])
-        ->name('admin.users.logout');
+        Route::prefix('note')->group(function () {
+            Route::get('/', [HomeController::class, 'history_note'])
+                ->name('admin.history.note');
+            Route::get('/search', [HomeController::class, 'history_note_search'])
+                ->name('admin.history.note.search');
+        });
+    });
+    
+    // Тренировки
+    Route::prefix('training')->group(function () {
+        Route::get('/', [HomeController::class, 'training'])
+            ->name('admin.training');
+        Route::get('/create', [HomeController::class, 'training_create'])
+            ->name('admin.training.create');
 
-        // Создание времени для расписания
-    Route::get('/schedules/time', [HomeController::class, 'schedules_time'])
-        ->name('admin.schedules.time');
-    // Создание расписания
-    Route::post('/schedules/create', [PostSchedulesController::class, 'create'])
-        ->name('admin.query.schedules.create');
-    Route::post('/schedules/update', [PostSchedulesController::class, 'update'])
-        ->name('admin.query.schedules.update');
-    Route::get('/schedules/delete/{id}', [PostSchedulesController::class, 'delete'])
-        ->name('admin.query.schedules.delete');
+        Route::prefix('type')->group(function () {
+            Route::get('/', [HomeController::class, 'training_type'])
+                ->name('admin.training.type');
 
-    // Обновление пользователя
-    Route::post('/users/update', [PostUserController::class, 'update'])
-        ->name('admin.query.users.update');
+            // Удаление типа тренировки
+            Route::get('/workout/delete/{id}', [PostTypeWorkoutController::class, 'delete'])
+                ->name('admin.query.type.workout.delete');
+            Route::post('/workout/create', [PostTypeWorkoutController::class, 'create'])
+                ->name('admin.query.type.workout.create');
+        });
 
-    // Удаление типа тренировки
-    Route::get('/type/workout/delete/{id}', [PostTypeWorkoutController::class, 'delete'])
-        ->name('admin.query.type.workout.delete');
-    Route::post('/type/workout/create', [PostTypeWorkoutController::class, 'create'])
-        ->name('admin.query.type.workout.create');
+        // Запросы для тренировок
+        Route::prefix('workout')->group(function () {
+            Route::get('/delete/{id}', [PostWorkoutController::class, 'delete'])
+            ->name('admin.query.workout.delete');
+        Route::post('/create', [PostWorkoutController::class, 'create'])
+            ->name('admin.query.workout.create');
+        });
+    });
 
-    // Запросы для тренировок
-    Route::get('/workout/delete/{id}', [PostWorkoutController::class, 'delete'])
-        ->name('admin.query.workout.delete');
-    Route::post('/workout/create', [PostWorkoutController::class, 'create'])
-        ->name('admin.query.workout.create');
+    // Пользователи
+    Route::prefix('users')->group(function () {
+        Route::get('/', [HomeController::class, 'users'])
+            ->name('admin.users');
+        Route::get('/update/{id}', [HomeController::class, 'users_update'])
+            ->name('admin.users.update');
+        
+        Route::get('/couch', [HomeController::class, 'user_couches'])
+            ->name('admin.users.couch');
 
-    // Запросы для времени расписания
-    Route::post('/schedule/time/create', [PostScheduleTimeController::class, 'create'])
-        ->name('admin.query.schedule.time.create');
-    Route::post('/schedule/time/delete', [PostScheduleTimeController::class, 'delete'])
-        ->name('admin.query.schedule.time.delete');
+        // Авторизация в админке
+        Route::post('/auth', [PostProfileController::class, 'auth'])
+            ->name('admin.users.auth');
+        Route::post('/logout', [PostProfileController::class, 'logout'])
+            ->name('admin.users.logout');
+
+        // Обновление пользователя
+        Route::post('/update', [PostUserController::class, 'update'])
+            ->name('admin.query.users.update');
+    });
+
+    // Залы
+    Route::prefix('hall')->group(function () {
+        Route::get('/', [HomeController::class, 'hall'])
+            ->name('admin.halls');
+        Route::get('/show/{id}', [HomeController::class, 'hall_show'])
+            ->name('admin.hall');
+        
+            Route::prefix('schedules')->group(function () {
+                Route::get('/', [HomeController::class, 'hall_shadule'])
+                    ->name('admin.hall_shadules');
+            });
+
+        // Запросы
+        Route::post('/create', [HallController::class, 'create'])
+            ->name('admin.query.create');
+        Route::post('/update', [HallController::class, 'update'])
+            ->name('admin.query.update');
+        Route::post('/delete', [HallController::class, 'delete'])
+            ->name('admin.query.delete');
+    });
 });
 

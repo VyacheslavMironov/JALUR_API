@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ScheduleCreateRequest extends FormRequest
+class CreateHallRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,20 +22,14 @@ class ScheduleCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'hallId' => ['required'],
-            'workoutId' => ['required'],
-            'couch' => ['required'],
-            'scheduleTimeId' => ['required'],
+            'name' => ['required']
         ];
     }
 
     public function messages()
     {
         return [
-            'hallId.required' => 'Выберите зал!',
-            'workoutId.required' => 'Выберите тренировку!',
-            'couch.required' => 'Выберите тренера!',
-            'scheduleTimeId.required' => 'Выберите время начала тренировки!'
+            'name.required' => 'Это обязательное поле!',
         ];
     }
 }

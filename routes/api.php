@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\TypeWorkoutsController;
 use App\Http\Controllers\Api\WorkoutsController;
 use App\Http\Controllers\Api\ScheduleController;
 use App\Http\Controllers\Api\ScheduleTimeController;
+use App\Http\Controllers\Api\HallController;
 use App\Http\Controllers\Api\RecordController;
 use App\Http\Controllers\Api\HistoryWorkoutsController;
 
@@ -64,6 +65,14 @@ Route::prefix('schedule')->group(function () {
         Route::post('create', [ScheduleController::class, 'CreateAction']);
         Route::get('delete/{schedule_id}', [ScheduleController::class, 'DeleteAction']);
         Route::post('update', [ScheduleController::class, 'UpdateAction']);
+    });
+    // Залы
+    Route::prefix('hall')->group(function () {
+        Route::get('/', [HallController::class, 'all']); 
+        Route::post('create', [HallController::class, 'create']); 
+        Route::get('show/{id}', [HallController::class, 'show']); 
+        Route::post('update', [HallController::class, 'update']); 
+        Route::post('delete', [HallController::class, 'delete']); 
     });
     // Запросы к апи времени расписания
     Route::prefix('time')->group(function () {

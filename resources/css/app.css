@@ -13,8 +13,10 @@ h3,
 h4,
 p,
 strong,
-span{
+span,
+.text{
     color: #75646C;
+    
 }
 html,
 body,
@@ -61,7 +63,17 @@ main,
 .menu-active:hover{
     color: #F6F6F6;
 }
-
+.btn-link{
+    background-color: #977585;
+    color: #F6F6F6;
+    font-weight: 600;
+}
+.btn-link:hover{
+    transition: .6s;
+    background-color: #F6F6F6;
+    color: #977585;
+    font-weight: 600;
+}
 .btn-panel{
     background-color: #F6F6F6;
     color: #977585;

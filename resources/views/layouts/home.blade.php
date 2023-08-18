@@ -33,10 +33,13 @@
                     <div class="menu-body mt-5 p-3">
                         <ul>
                             <li class="mt-3">
-                                <a href="{{ route('admin.schedules') }}" class="nav-item btn bx-button-menu @if($title == 'Расписание') menu-active @endif">Расписание</a>
+                                <a href="{{ route('admin.halls') }}" class="nav-item btn bx-button-menu @if($title == 'Залы') menu-active @endif">Залы</a>
                             </li>
                             <li class="mt-3">
-                                <a href="{{ route('admin.history.note') }}" class="nav-item btn bx-button-menu @if($title == 'История записей') menu-active @endif">История записей</a>
+                                <a href="{{ route('admin.hall_shadules') }}" class="nav-item btn bx-button-menu @if($title == 'Расписание') menu-active @endif">Расписание</a>
+                            </li>
+                            <li class="mt-3">
+                                <a href="{{ route('admin.history.note') }}" class="nav-item btn bx-button-menu @if($title == 'История записей') menu-active @endif">Аналитика </a>
                             </li>
                             <li class="mt-3">
                                 <a href="{{ route('admin.training') }}" class="nav-item btn bx-button-menu @if($title == 'Занятия') menu-active @endif">Занятия</a>

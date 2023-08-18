@@ -3,6 +3,7 @@ namespace App\Domain\Service;
 
 use App\DTO\Schedules\CreateScheduleDTO;
 use App\DTO\Schedules\ShowScheduleDTO;
+use App\DTO\Schedules\ShowHallScheduleDTO;
 use App\DTO\Schedules\UpdateScheduleDTO;
 use App\DTO\Schedules\DeleteScheduleDTO;
 use App\Infrastructure\Repository\ScheduleRepository;
@@ -25,6 +26,11 @@ class ScheduleService implements IScheduleService
     public function ShowAction(ShowScheduleDTO $context)
     {
         return $this->repository->Show($context);
+    }
+
+    public function ShowbyHallAction(ShowHallScheduleDTO $context)
+    {
+        return $this->repository->ShowByHall($context);
     }
 
     public function AllAction()

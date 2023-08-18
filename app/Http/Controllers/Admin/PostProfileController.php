@@ -42,7 +42,7 @@ class PostProfileController extends Controller
                 ]);
             }
             $request->session()->put("BearerToken", "Bearer ".$token);
-            return redirect()->route('admin.schedules');
+            return redirect()->route('admin.hall_shadules');
         }
         catch (\Exception)
         {

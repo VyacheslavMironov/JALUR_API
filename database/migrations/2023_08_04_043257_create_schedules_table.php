@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
+            $table->integer('HallId');
             $table->integer('WorkoutId');
             $table->integer('Couch');
-            $table->enum('WeekDay',
-                ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']);
-            $table->boolean('Active');
+            $table->date('DateWork');
             $table->integer('ScheduleTimeId');
             $table->timestamps();
+            $table->foreign('HallId')
+                ->references('id')
+                ->on('halls')
+                ->onDelete('cascade');
             $table->foreign('WorkoutId')
                 ->references('id')
                 ->on('workouts')

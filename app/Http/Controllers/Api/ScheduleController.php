@@ -19,10 +19,10 @@ class ScheduleController extends Controller
         $request->validated();
         return $service->CreateAction(
             new CreateScheduleDTO(
+                $request['hallId'],
                 $request['workoutId'],
                 $request['couch'],
-                $request['weekDay'],
-                $request['active'],
+                $request['dateWork'],
                 $request['scheduleTimeId']
             )
         );
@@ -46,10 +46,10 @@ class ScheduleController extends Controller
         return $service->UpdateAction(
             new UpdateScheduleDTO(
                 $request->Id,
+                $request->HallId,
                 $request->WorkoutId,
                 $request->Couch,
-                $request->WeekDay,
-                $request->Active,
+                $request->DateWork,
                 $request->ScheduleTimeId
             )
         );

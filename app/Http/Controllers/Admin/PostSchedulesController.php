@@ -18,10 +18,10 @@ class PostSchedulesController extends Controller
         $request->validated();
         $service->CreateAction(
             new CreateScheduleDTO(
+                $request['hallId'],
                 $request['workoutId'],
                 $request['couch'],
-                $request['weekDay'],
-                true,
+                $request['dateWork'],
                 $request['scheduleTimeId']
             )
         );
@@ -34,10 +34,10 @@ class PostSchedulesController extends Controller
         $service->UpdateAction(
             new UpdateScheduleDTO(
                 $request['id'],
+                $request['hallId'],
                 $request['workoutId'],
                 $request['couch'],
-                $request['weekDay'],
-                $request['active'],
+                $request['dateWork'],
                 $request['scheduleTimeId']
             )
         );
