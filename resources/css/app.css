@@ -135,17 +135,44 @@ form input{
 }
 .bg-table-body{
     background-color: #977585;
+    color: #F6F6F6!important;
+}
+.bg-table-body p,
+.bg-table-body span,
+.bg-table-body strong
+{
+    color: #F6F6F6!important;
 }
 .bg-table-body span{
     color: #F6F6F6!important;
 }
+.bg-table-body ul{
+    padding: 0.5em;
+}
+
+.bg-table-body ul li{
+    font-size: 0.8em;
+}
+.bg-table-body a{
+    text-decoration: none;
+}
+.bg-table-body:hover,
+.bg-table-body:hover p,
+.bg-table-body:hover span,
+.bg-table-body:hover strong{
+    overflow: auto;
+    cursor: pointer;
+    background-color: #F6F6F6;
+    color: #977585!important;
+}
+
 .schedules .card{
     border-radius: 0%;
     box-shadow: none;
 }
 .flex-8{
-    width: 12.3%;
-    height: 5em;
+    width: 14.3%;
+    height: 15em;
 }
 
 table thead, table tbody{

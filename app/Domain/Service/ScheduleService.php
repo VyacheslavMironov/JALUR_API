@@ -8,6 +8,7 @@ use App\DTO\Schedules\UpdateScheduleDTO;
 use App\DTO\Schedules\DeleteScheduleDTO;
 use App\Infrastructure\Repository\ScheduleRepository;
 use App\Domain\IService\IScheduleService;
+use App\DTO\Schedules\ShowDateScheduleDTO;
 
 class ScheduleService implements IScheduleService
 {
@@ -31,6 +32,11 @@ class ScheduleService implements IScheduleService
     public function ShowbyHallAction(ShowHallScheduleDTO $context)
     {
         return $this->repository->ShowByHall($context);
+    }
+
+    public function ShowByDateAction(ShowDateScheduleDTO $context)
+    {
+        return $this->repository->ShowByDate($context);
     }
 
     public function AllAction()

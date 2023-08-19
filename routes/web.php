@@ -55,8 +55,10 @@ Route::prefix('admin')->group(function () {
                 ->name('admin.query.schedule.time.delete');
         });
         //
-        Route::get('/{hallId}', [HomeController::class, 'schedules'])
-        ->name('admin.schedules');
+        Route::get('/{hallId}/{month}/{year}', [HomeController::class, 'schedules'])
+            ->name('admin.schedules');
+        Route::get('/for/{hallId}/{day}/{month}/{year}', [HomeController::class, 'schedules_for_day'])
+            ->name('admin.schedules_for_day');
     });
     
     // История

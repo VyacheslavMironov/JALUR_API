@@ -7,7 +7,11 @@ use App\DTO\Schedules\UpdateScheduleDTO;
 use App\DTO\Schedules\DeleteScheduleDTO;
 use App\DTO\Schedules\ShowHallScheduleDTO;
 use App\Domain\IRepository\IScheduleRepository;
+use App\DTO\Schedules\ShowDateScheduleDTO;
 use App\Models\Schedule;
+use App\Models\ScheduleTime;
+use App\Models\User;
+use App\Models\Workout;
 
 final class ScheduleRepository implements IScheduleRepository
 {
@@ -31,6 +35,18 @@ final class ScheduleRepository implements IScheduleRepository
     public function ShowByHall(ShowHallScheduleDTO $context)
     {
         return Schedule::where('HallId', $context->HallId)->get();
+    }
+
+    public function ShowByDate(ShowDateScheduleDTO $context)
+    {
+        $rows = Schedule::where('DateWork', $context->Date)->get();
+        foreach ($rows as &$row)
+        {
+            $row->Time = ScheduleTime::find($row->ScheduleTimeId);
+            $row->Workout = Workout::find($row->WorkoutId);
+            $row->CouchUser = User::find($row->Couch);
+        }
+        return $rows;
     }
 
     public function All()

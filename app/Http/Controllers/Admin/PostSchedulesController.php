@@ -25,7 +25,7 @@ class PostSchedulesController extends Controller
                 $request['scheduleTimeId']
             )
         );
-        return redirect()->route('admin.schedules');
+        return back();
     }
 
     public function update(ScheduleUpdateRequest $request, ScheduleService $service)
@@ -41,12 +41,12 @@ class PostSchedulesController extends Controller
                 $request['scheduleTimeId']
             )
         );
-        return redirect()->route('admin.schedules');
+        return back();
     }
 
     public function delete(int $id, ScheduleService $service)
     {
         $service->DeleteAction(new DeleteScheduleDTO($id));
-        return redirect()->route('admin.schedules');
+        return back();
     }
 }

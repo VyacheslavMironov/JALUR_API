@@ -11,7 +11,7 @@
                     <ul>
                         @foreach ($halls as $el)
                             <li class="mb-3">
-                                <a class="btn btn-link w-100" href="{{ route('admin.schedules', ['hallId' => $el->id]) }}">{{ $el->Name }}</a>
+                                <a class="btn btn-link w-100" href="{{ route('admin.schedules', ['hallId' => $el->id, "month" => $month, "year" => $year]) }}">{{ $el->Name }}</a>
                             </li>
                         @endforeach
                     </ul>

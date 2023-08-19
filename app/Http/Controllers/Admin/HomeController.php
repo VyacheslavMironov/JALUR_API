@@ -13,11 +13,15 @@ use App\DTO\Schedules\ShowScheduleDTO;
 use App\DTO\TypeWorkouts\ShowTypeWorkoutsDTO;
 use App\DTO\Workouts\ShowWorkoutsDTO;
 use App\DTO\Hall\ShowHallDTO;
+use App\DTO\Schedules\ShowDateScheduleDTO;
 use App\DTO\Schedules\ShowHallScheduleDTO;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Carbon\Carbon;
+use ErrorException;
+use Exception;
 use Illuminate\Http\Request;
+use TypeError;
 
 use function PHPUnit\Framework\isNull;
 
@@ -38,81 +42,210 @@ class HomeController extends Controller
         {
             return view('hall_schedules', [
                 'halls' => $service->AllAction(),
-                "title" => "Расписание"
+                "title" => "Расписание",
+                "month" => Carbon::now()->month,
+                "year" => Carbon::now()->year
             ]);
         }
         return redirect()->route('admin.login');
     }
 
-    public function schedules(int $hallId, ScheduleService $service, WorkoutService $workoutService, User $userService, ScheduleTimeService $scheduleTimeService)
+    public function schedules(int $hallId, int $month, int $year, ScheduleService $service, WorkoutService $workoutService, User $userService, ScheduleTimeService $scheduleTimeService)
     {
+        $s=0;
         
         if (session()->get("id"))
         {
-            $calendar = [];
+            $calendar = [
+                array(),
+                array(),
+                array(),
+                array(),
+                array(),
+                array(),
+            ];
             $currentDate = Carbon::now();
             // Количество дней в текущем месяце
             $numberOfDays = $currentDate->daysInMonth;
 
             for ($day = 1; $day <= $numberOfDays; $day++) {
                 $date = Carbon::createFromDate(
-                    $currentDate->year, 
-                    $currentDate->month, 
+                    $year, 
+                    $month, 
                     $day
                 );
-                array_push($calendar, [
-                    'Date' => $date->toDateString(),
-                    'DayOfWeek' => $date->format('l'),
-                    'IsWeekend' => $date->isWeekend()
-                ]);
+                $i = (int)Carbon::parse($date)->weekOfMonth - 1;
+                if ($date->day == 1)
+                {
+                    
+                    if ($date->isTuesday() && $s == 0)
+                    {
+                        array_push($calendar[0], []);
+                    }
+                    if ($date->isWednesday() && $s == 0)
+                    {
+                        array_push($calendar[0], []);
+                        array_push($calendar[0], []);
+                    }
+                    if ($date->isThursday() && $s == 0)
+                    {
+                        array_push($calendar[0], []);
+                        array_push($calendar[0], []);
+                        array_push($calendar[0], []);
+                    }
+                    if ($date->isFriday() && $s == 0)
+                    {
+                        array_push($calendar[0], []);
+                        array_push($calendar[0], []);
+                        array_push($calendar[0], []);
+                        array_push($calendar[0], []);
+                    }
+                    if ($date->isSaturday() && $s == 0)
+                    {
+                        array_push($calendar[0], []);
+                        array_push($calendar[0], []);
+                        array_push($calendar[0], []);
+                        array_push($calendar[0], []);
+                        array_push($calendar[0], []);
+                    }
+                    if ($date->isSunday() && $s == 0)
+                    {
+                        array_push($calendar[0], []);
+                        array_push($calendar[0], []);
+                        array_push($calendar[0], []);
+                        array_push($calendar[0], []);
+                        array_push($calendar[0], []);
+                        array_push($calendar[0], []);
+                    }
+                    
+                    if ($date->month == $month)
+                    {
+                        array_push($calendar[0], [
+                            'Day' => $date->day,
+                            'Date' => $date->toDateString(),
+                        ]);
+                    }
+                    
+                    $s = 1;
+                }
+                else
+                {
+                    if (count($calendar[$i]) == 7 && $date->day != 1)
+                    {
+                        $i += 1;
+                    }
+                    try
+                    {
+                        if ($date->month == $month)
+                        {
+                            array_push($calendar[$i], [
+                                'Day' => $date->day,
+                                'Date' => $date->toDateString(),
+                            ]);
+                        }
+                    } catch(TypeError)
+                    {}
+                    
+                }
+            }
+            while (count($calendar[4]) < 7)
+            {
+                array_push($calendar[4], []);
+            }
+            while (count($calendar[5]) < 7)
+            {
+                array_push($calendar[5], []);
             }
 
-            $arr = array();
-            foreach ($scheduleTimeService->AllAction() as $item)
+            foreach ($calendar as &$week)
             {
-                foreach ($service->ShowbyHallAction(new ShowHallScheduleDTO($hallId)) as $schedule)
+                foreach ($week as &$day)
                 {
-                    if ($item->id == $schedule->ScheduleTimeId)
+                    if (count($day) > 0)
                     {
-                        if ($schedule->Active)
-                        {
-                            $f = 0;
-                            for ($i = 0; count($arr) > $i; $i++)
-                            {
-                                if ($arr[$i]['ScheduleTime'] == $item->StartTime)
-                                {
-                                    array_push($arr[$i]['Values'], [
-                                        'Id' => $schedule->id,
-                                        'Name' => $workoutService->ShowAction(new ShowWorkoutsDTO($schedule->WorkoutId))->Name,
-                                        'Couch' => $userService::find($schedule->Couch),
-                                        'WeekDay' => $schedule->WeekDay,
-                                    ]);
-                                    $f = 1;
-                                }
-                            }
-                            if ($f == 0)
-                            {
-                                array_push($arr, [
-                                    'ScheduleTime' => $item->StartTime,
-                                    'Values' => [[
-                                        'Id' => $schedule->id,
-                                        'Name' => $workoutService->ShowAction(new ShowWorkoutsDTO($schedule->WorkoutId))->Name,
-                                        'Couch' => $userService::find($schedule->Couch),
-                                        'WeekDay' => $schedule->WeekDay,
-                                    ]]
-                                ]);
-                            }
-                        }
+                        $day['ValueWork'] = $service->ShowByDateAction(
+                            new ShowDateScheduleDTO(
+                                $day["Date"]
+                            )
+                        );
                     }
                 }
             }
+
+            $monthName = 'Неопознано';
+            if ($month == 1) $monthName = 'Январь';
+            if ($month == 2) $monthName = 'Февраль';
+            if ($month == 3) $monthName = 'Март';
+            if ($month == 4) $monthName = 'Апрель';
+            if ($month == 5) $monthName = 'Май';
+            if ($month == 6) $monthName = 'Июнь';
+            if ($month == 7) $monthName = 'Июль';
+            if ($month == 8) $monthName = 'Август';
+            if ($month == 9) $monthName = 'Сентябрь';
+            if ($month == 10) $monthName = 'Октябрь';
+            if ($month == 11) $monthName = 'Ноябрь';
+            if ($month == 12) $monthName = 'Декабрь';
+
+            $yearUp = null;
+            $yearDown = null;
+            $monthUp = null;
+            $monthDown = null;
+            if ($month == 12)
+            {
+                $monthUp = 1;
+                $yearUp = $year + 1;
+            }
+
+
+            if ($month == 1)
+            {
+                $monthDown = 12;
+                $yearDown = $year - 1;
+            }
             return view('schedules', [
-                "schedules" => $arr,
                 "calendar" => $calendar,
+                "title" => "Расписание",
+                "monthName" => $monthName,
+                "year" => $year,
+                "yearUp" => $yearUp ? $yearUp : $year,
+                "yearDown" => $yearDown ? $yearDown : $year,
+                "month" => $month,
+                "monthUp" => $monthUp ? $monthUp : $month + 1,
+                "monthDown" => $monthDown ? $monthDown : $month -1,
+                "hallId" => $hallId
+            ]);
+        }
+        return redirect()->route('admin.login');
+    }
+
+    public function schedules_for_day(int $hallId, int $day, int $month, int $year, ScheduleService $service)
+    {
+        if (session()->get("id"))
+        {
+            $date = Carbon::createFromDate(
+                $year, 
+                $month, 
+                $day
+            );
+            $arr = array();
+
+            foreach ($service->ShowByDateAction(new ShowDateScheduleDTO($date->toDateString())) as $row)
+            {
+                if ($hallId == $row->HallId)
+                {
+                    array_push(
+                        $arr,
+                        $row
+                    );
+                }
+            }
+
+            return view('schedules_for_day', [
+                "schedule" => $arr,
                 "title" => "Расписание"
             ]);
         }
-        // return redirect()->route('admin.login');
+        return redirect()->route('admin.login');
     }
 
     public function schedules_create(HallService $hallService, WorkoutService $workoutService, User $userService, ScheduleTimeService $scheduleTimeService)
