@@ -105,6 +105,8 @@ Route::prefix('admin')->group(function () {
     Route::prefix('users')->group(function () {
         Route::get('/', [HomeController::class, 'users'])
             ->name('admin.users');
+        Route::get('/create', [HomeController::class, 'users_create'])
+            ->name('admin.users.create');
         Route::get('/update/{id}', [HomeController::class, 'users_update'])
             ->name('admin.users.update');
         
@@ -118,6 +120,8 @@ Route::prefix('admin')->group(function () {
             ->name('admin.users.logout');
 
         // Обновление пользователя
+        Route::post('/create', [PostUserController::class, 'create'])
+            ->name('admin.query.users.create');
         Route::post('/update', [PostUserController::class, 'update'])
             ->name('admin.query.users.update');
     });

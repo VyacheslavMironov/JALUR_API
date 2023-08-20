@@ -408,6 +408,18 @@ class HomeController extends Controller
         return redirect()->route('admin.login');
     }
 
+    public function users_create(UserService $service)
+    {
+        if (session()->get("id"))
+        {
+
+            return view('user_create',[
+                "title" => "Пользователи"
+            ]);
+        }
+        return redirect()->route('admin.login');
+    }
+
     public function history_sale()
     {
         if (session()->get("id"))

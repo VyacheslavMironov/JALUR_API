@@ -20,7 +20,7 @@
                     {{-- END --}}
                     <div class="container">
                         <div class="col-8 mx-auto">
-                            <form action="{{ route('admin.query.users.update') }}" enctype="multipart/form-data" method="post">
+                            <form action="{{ route('admin.query.users.create') }}" enctype="multipart/form-data" method="post">
                                 @csrf
                                 <div class="col-12 mb-5 mt-3">
                                     <h4 class="text-center">Добавить</h4>
@@ -29,18 +29,7 @@
                                     <input
                                         type="hidden"
                                         class="form-control"
-                                        name="id"
-                                        value="{{ $user->id }}">
-                                    <input
-                                        type="hidden"
-                                        class="form-control"
-                                        name="image_old"
-                                        value="{{ $user->Image }}">
-                                    <input
-                                        type="hidden"
-                                        class="form-control"
-                                        name="gender"
-                                        value="{{ $user->Gender }}">
+                                        name="id">
                                     <div class="col-6">
                                         <div class="mb-3">
                                             <label class="form-label">Имя</label>
@@ -48,7 +37,6 @@
                                                 type="text"
                                                 class="form-control"
                                                 name="first_name"
-                                                value="{{ $user->FirstName }}"
                                                 autocomplete="off"
                                                 @error('first_name') is-invalid @enderror>
                                             <span class="text-center">
@@ -63,7 +51,6 @@
                                                 type="text"
                                                 class="form-control"
                                                 name="last_name"
-                                                value="{{ $user->LastName }}"
                                                 autocomplete="off"
                                                 @error('last_name') is-invalid @enderror>
                                             <span class="text-center">
@@ -79,7 +66,6 @@
                                         type="tel"
                                         class="form-control"
                                         name="phone"
-                                        value="{{ $user->Phone }}"
                                         autocomplete="off"
                                         @error('phone') is-invalid @enderror>
                                     <span class="text-center">
@@ -94,7 +80,6 @@
                                                 type="number"
                                                 class="form-control"
                                                 name="age"
-                                                value="{{ $user->Age }}"
                                                 autocomplete="off"
                                                 @error('age') is-invalid @enderror>
                                             <span class="text-center">
@@ -106,10 +91,10 @@
                                         <div class="mb-3">
                                             <label class="form-label">Роль</label>
                                             <select id="role" onchange="roleRead()" class="form-select" name="role" aria-label="Default select example" @error('role') is-invalid @enderror>
-                                                <option @if ($user->Role == null) selected @endif>Нажмите что бы выбрать</option>
-                                                <option @if ($user->Role == 'Администратор') selected @endif value="Администратор">Администратор</option>
-                                                <option @if ($user->Role == 'Тренер') selected @endif value="Тренер">Тренер</option>
-                                                <option @if ($user->Role == 'Клиент') selected @endif value="Клиент">Клиент</option>
+                                                <option>Нажмите что бы выбрать</option>
+                                                <option value="Администратор">Администратор</option>
+                                                <option value="Тренер">Тренер</option>
+                                                <option value="Клиент">Клиент</option>
                                             </select>
                                             <span class="text-center">
                                                 @error('role') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
@@ -128,7 +113,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Описание тренера</label>
-                                        <textarea class="form-control" name="description" cols="30" rows="10" autocomplete="off">{{ $user->Description }}</textarea>
+                                        <textarea class="form-control" name="description" cols="30" rows="10" autocomplete="off"></textarea>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -139,7 +124,6 @@
                                                 type="text"
                                                 class="form-control"
                                                 name="weight"
-                                                value="{{ $user->Weight }}"
                                                 autocomplete="off"
                                                 @error('weight') is-invalid @enderror>
                                             <span class="text-center">
@@ -154,13 +138,24 @@
                                                 type="text"
                                                 class="form-control"
                                                 name="height"
-                                                value="{{ $user->Height }}"
                                                 autocomplete="off"
                                                 @error('height') is-invalid @enderror>
                                             <span class="text-center">
                                                 @error('height') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
                                             </span>
                                         </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Пароль</label>
+                                        <input
+                                            type="password"
+                                            class="form-control"
+                                            name="password"
+                                            autocomplete="off"
+                                            @error('password') is-invalid @enderror>
+                                        <span class="password-center">
+                                            @error('height') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end">

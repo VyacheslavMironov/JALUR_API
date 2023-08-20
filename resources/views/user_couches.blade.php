@@ -6,7 +6,13 @@
             <div class="col-12 mb-4 mt-4">
                 <h3 class="text-center">Пользователи</h3>
             </div>
-
+            <div class="col-12">
+                <div class="d-flex  justify-content-between">
+                    <div class="col-12 d-flex">
+                        <a href="{{ route('admin.users.create') }}" class="btn btn-panel btn-panel-active m-2">Добавить</a>
+                    </div>
+                </div>
+            </div>
             <div class="col-12">
                 <div class="card w-100 p-2">
                     {{-- Если пустой массив --}}
