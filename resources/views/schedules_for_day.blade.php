@@ -19,7 +19,7 @@
                 <div class="card w-100 p-2">
                     <div class="container">
                         @if (count($schedule))
-                            <table class="table table-hover table-bordered">
+                            <table class="table table-hover">
                                 <thead>
                                   <tr>
                                     <th scope="col">Время</th>

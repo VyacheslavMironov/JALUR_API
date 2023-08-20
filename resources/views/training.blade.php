@@ -44,7 +44,7 @@
                                             <span>Тип</span>
                                         </div>
                                         <div class="col-4 d-flex align-items-center">
-                                            <span>{{ $el->Description }}</span>
+                                            <span>{{ mb_substr($el->Description, 0, 90) }}...</span>
                                         </div>
                                         <div class="col-2 d-flex align-items-end">
                                             <form action="{{ route('admin.query.workout.delete', ['id' => $el->id]) }}" method="get">

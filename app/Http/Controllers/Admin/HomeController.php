@@ -14,16 +14,10 @@ use App\DTO\TypeWorkouts\ShowTypeWorkoutsDTO;
 use App\DTO\Workouts\ShowWorkoutsDTO;
 use App\DTO\Hall\ShowHallDTO;
 use App\DTO\Schedules\ShowDateScheduleDTO;
-use App\DTO\Schedules\ShowHallScheduleDTO;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Carbon\Carbon;
-use ErrorException;
-use Exception;
-use Illuminate\Http\Request;
 use TypeError;
-
-use function PHPUnit\Framework\isNull;
 
 class HomeController extends Controller
 {

@@ -59,10 +59,10 @@
             </div>
             <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9 mt-3 col-sm-10 row-component">
                 <div class="header">
-                    <div class="row">
-                        <div class="col-xxl-8 col-xl-7 col-lg-8 col-md-6"></div>
-                        <div class="col-xxl-4 col-xl-5 col-lg-4 col-md-6">
-                            <div class="position-fixed w-20-e user-admin">
+                    <div class="row" id="top-menu">
+                        <div class="col-xxl-8 col-xl-7 col-lg-8 col-md-6" id="top-menu-left"></div>
+                        <div class="col-xxl-4 col-xl-5 col-lg-4 col-md-6" id="top-menu-right">
+                            <div class="w-20-e user-admin">
                                 <div class="card w-100 p-2">
                                     <div class="col-12">
                                         <div class="row">
@@ -99,8 +99,9 @@
                     </div>
                 </div>
                 <div id="content" class="row mt-7-e mb-5">
+
                     @if (\Session::has('error'))
-                        <div class="toast se-toast mt-2" id="seToastError" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast mt-2" id="Toast" role="alert" aria-live="assertive" aria-atomic="true">
                             <div class="toast-header">
                                 <strong class="me-auto">Ошибка</strong>
                                 <button type="button" id="seToastButtonClose" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -110,6 +111,19 @@
                             </div>
                         </div>
                     @endif
+
+                    @if (\Session::has('success'))
+                        <div class="toast mt-2" id="Toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header">
+                                <strong class="me-auto">Успех!</strong>
+                                <button type="button" id="seToastButtonClose" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body text-white bg-success">
+                                {!! \Session::get('success') !!}
+                            </div>
+                        </div>
+                    @endif
+
                     @yield('content')
                     <div class="mt-5"><br></div>
                 </div>
@@ -119,5 +133,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('seToastButtonClose').onclick = function ()
+        {
+            return document.getElementById('Toast').style.display = "none";
+        }
+    </script>
 </body>
 </html>
