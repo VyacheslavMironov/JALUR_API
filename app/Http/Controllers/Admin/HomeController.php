@@ -165,7 +165,8 @@ class HomeController extends Controller
                     {
                         $day['ValueWork'] = $service->ShowByDateAction(
                             new ShowDateScheduleDTO(
-                                $day["Date"]
+                                $day["Date"],
+                                $hallId
                             )
                         );
                     }
@@ -229,7 +230,7 @@ class HomeController extends Controller
             );
             $arr = array();
 
-            foreach ($service->ShowByDateAction(new ShowDateScheduleDTO($date->toDateString())) as $row)
+            foreach ($service->ShowByDateAction(new ShowDateScheduleDTO($date->toDateString(), $hallId)) as $row)
             {
                 if ($hallId == $row->HallId)
                 {
@@ -239,6 +240,11 @@ class HomeController extends Controller
                     );
                 }
             }
+            
+            
+            usort($arr, function($a, $b) {
+                return strcmp($a['Time']['StartTime'], $b['Time']['StartTime']);
+            });
 
             return view('schedules_for_day', [
                 "schedule" => $arr,

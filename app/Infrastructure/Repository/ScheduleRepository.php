@@ -39,7 +39,9 @@ final class ScheduleRepository implements IScheduleRepository
 
     public function ShowByDate(ShowDateScheduleDTO $context)
     {
-        $rows = Schedule::where('DateWork', $context->Date)->get();
+        $rows = Schedule::where('DateWork', $context->Date)
+            ->where('HallId', $context->HallId)
+            ->get();
         foreach ($rows as &$row)
         {
             $row->Time = ScheduleTime::find($row->ScheduleTimeId);

@@ -19,9 +19,26 @@
                 <div class="card w-100 p-2">
                     <div class="container">
                         @if (count($schedule))
-                            @foreach ($schedule as $el)
-                                {{ $el }}
-                            @endforeach
+                            <table class="table table-hover table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Время</th>
+                                    <th scope="col">Тренировка</th>
+                                    <th scope="col">Тренер</th>
+                                    <th scope="col">Записано</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($schedule as $el)
+                                        <tr>
+                                            <td>{{ mb_substr($el->Time['StartTime'], 0, 5) }}</td>
+                                            <td>{{ $el->Workout['Name'] }}</td>
+                                            <td>{{ $el->CouchUser['LastName'] }} {{ $el->CouchUser['FirstName'] }}</td>
+                                            <td>0</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         @else
                             <h4 class="text-center">Данных нет</h4>
                         @endif
