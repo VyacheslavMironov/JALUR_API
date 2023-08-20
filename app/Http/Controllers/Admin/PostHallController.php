@@ -21,7 +21,7 @@ class PostHallController extends Controller
                 $request['name']
             )
         );
-        return redirect()->route('admin.halls');
+        return redirect()->route('admin.halls')->with('success', 'Данные добавлены!');
     }
 
     public function update(UpdateHallRequest $request, HallService $service)
@@ -33,7 +33,7 @@ class PostHallController extends Controller
                 $request['name']
             )
         );
-        return redirect()->route('admin.halls');
+        return redirect()->route('admin.halls')->with('success', 'Данные обновлены!');
     }
 
     public function delete(Request $request, HallService $service)
@@ -43,6 +43,6 @@ class PostHallController extends Controller
                 $request->id
             )
         );
-        return redirect()->route('admin.halls');
+        return redirect()->route('admin.halls')->with('success', 'Данные удалены!');
     }
 }

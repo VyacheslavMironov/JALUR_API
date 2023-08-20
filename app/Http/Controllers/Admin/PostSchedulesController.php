@@ -25,7 +25,7 @@ class PostSchedulesController extends Controller
                 $request['scheduleTimeId']
             )
         );
-        return back();
+        return back()->with('success', 'Данные добавлены!');
     }
 
     public function update(ScheduleUpdateRequest $request, ScheduleService $service)
@@ -41,12 +41,12 @@ class PostSchedulesController extends Controller
                 $request['scheduleTimeId']
             )
         );
-        return back();
+        return back()->with('success', 'Данные обновлены!');
     }
 
     public function delete(int $id, ScheduleService $service)
     {
         $service->DeleteAction(new DeleteScheduleDTO($id));
-        return back();
+        return back()->with('success', 'Данные удалены!');
     }
 }

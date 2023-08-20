@@ -24,13 +24,13 @@ class PostWorkoutController extends Controller
                 $context['description']
             )
         );
-        return back();
+        return back()->with('success', 'Данные добавлены!');
     }
     public function delete(int $id, WorkoutService $service)
     {
         $service->DeleteAction(
             new DeleteWorkoutsDTO($id)
         );
-        return back();
+        return back()->with('success', 'Данные удалены!');
     }
 }

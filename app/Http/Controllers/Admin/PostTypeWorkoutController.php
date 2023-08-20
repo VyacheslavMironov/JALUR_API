@@ -17,13 +17,13 @@ class PostTypeWorkoutController extends Controller
         $service->CreateAction(
             new CreateTypeWorkoutsDTO($context['name'])
         );
-        return back();
+        return back()->with('success', 'Данные добавлены!');
     }
     public function delete(int $id, TypeWorkoutsService $service)
     {
         $service->DeleteAction(
             new DeleteTypeWorkoutsDTO($id)
         );
-        return back();
+        return back()->with('success', 'Данные удалены!');
     }
 }

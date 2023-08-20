@@ -37,6 +37,6 @@ class PostUserController extends Controller
                 $context['role'],
             )
         );
-        return back();
+        return back()->with('success', 'Данные обновлены!');
     }
 }

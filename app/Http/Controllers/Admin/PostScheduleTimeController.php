@@ -17,7 +17,7 @@ class PostScheduleTimeController extends Controller
         $service->CreateAction(
             new CreateScheduleTimeDTO($request['startTime'])
         );
-        return back();
+        return back()->with('success', 'Данные добавлены!');
     }
 
     public function delete(Request $request, ScheduleTimeService $service)
@@ -25,6 +25,6 @@ class PostScheduleTimeController extends Controller
         $service->DeleteAction(
             new DeleteScheduleTimeDTO($request->Id)
         );
-        return back();
+        return back()->with('success', 'Данные удалены!');
     }
 }
