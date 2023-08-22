@@ -119,7 +119,7 @@
 
                                         <div class="mt-3"></div>
                                         <div class="d-flex justify-content-end">
-                                            <button type="submit" class="btn">Отправить</button>
+                                            <button type="submit" class="btn">Сохранить</button>
                                         </div>
                                     </div>
                                 </div>

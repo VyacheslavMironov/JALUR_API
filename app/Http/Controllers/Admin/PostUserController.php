@@ -14,7 +14,6 @@ class PostUserController extends Controller
 {
     public function create(Request $not_necessary, CreateUserRequest $request, UserService $service)
     {
-        return 1;
         $request->validated();
         $service->CreateAction(
             new CreateUserDTO(

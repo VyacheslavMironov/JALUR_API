@@ -35,7 +35,7 @@
                                         @error('startTime') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
                                     </span>
                                 </div>
-                                <button type="submit" class="btn">Отправить</button>
+                                <button type="submit" class="btn">Сохранить</button>
                             </form>
                         </div>
                     </div>

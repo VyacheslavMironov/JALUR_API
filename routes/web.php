@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\PostScheduleTimeController;
 use App\Http\Controllers\Admin\PostUserController;
 use App\Http\Controllers\Admin\PostTypeWorkoutController;
 use App\Http\Controllers\Admin\PostWorkoutController;
-use App\Http\Controllers\Api\HallController;
+use App\Http\Controllers\Admin\PostHallController;
 
 /*
 |--------------------------------------------------------------------------
@@ -139,11 +139,11 @@ Route::prefix('admin')->group(function () {
             });
 
         // Запросы
-        Route::post('/create', [HallController::class, 'create'])
+        Route::post('/create', [PostHallController::class, 'create'])
             ->name('admin.query.create');
-        Route::post('/update', [HallController::class, 'update'])
+        Route::post('/update', [PostHallController::class, 'update'])
             ->name('admin.query.update');
-        Route::post('/delete', [HallController::class, 'delete'])
+        Route::post('/delete', [PostHallController::class, 'delete'])
             ->name('admin.query.delete');
     });
 });

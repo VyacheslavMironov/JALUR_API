@@ -224,6 +224,7 @@ table tbody tr td, table tbody tr th{
 }
 #Toast{
     display: block;
+    z-index: 9999;
 }
 #calendar{
     background-color: #ff000000;
