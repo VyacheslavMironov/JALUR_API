@@ -104,4 +104,8 @@ class UserController extends Controller
     {
         return $service->AllTypeAction($role);
     }
+    public function ShowAction(int $id, UserService $service)
+    {
+        return $service->ShowAction($id);
+    }
 }
