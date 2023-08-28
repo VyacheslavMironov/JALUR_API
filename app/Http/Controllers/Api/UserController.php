@@ -14,6 +14,7 @@ use App\DTO\User\SearchUserByPhoneDTO;
 use App\DTO\User\CodeUserDTO;
 use App\DTO\User\UpdateUserDTO;
 use App\DTO\User\LogoutUserDTO;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -97,5 +98,10 @@ class UserController extends Controller
         return $service->LogoutAction(
             new LogoutUserDTO($user_id)
         );
+    }
+
+    public function GetRoleAction(string $role, UserService $service)
+    {
+        return $service->AllTypeAction($role);
     }
 }
