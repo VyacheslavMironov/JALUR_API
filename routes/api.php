@@ -28,11 +28,11 @@ Route::prefix('user')->group(function () {
     Route::post('create', [UserController::class, 'CreateAction']);
     Route::post('auth', [UserController::class, 'AuthAction']);
     Route::post('code', [UserController::class, 'CodeAction']);
+    Route::get('show/role/all/{role}', [UserController::class, 'GetRoleAction']);
     // Запросы с Bearer токеном
     Route::middleware('auth:sanctum')->group(function (){
         Route::get('logout/{user_id}', [UserController::class, 'LogoutAction']);
     });
-    Route::get('show/role/all/{role}', [UserController::class, 'GetRoleAction']);
 });
 
 Route::prefix('type')->group(function () {
