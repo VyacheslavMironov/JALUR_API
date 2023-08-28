@@ -102,6 +102,21 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Пол</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="Женщина" checked>
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Женщина
+                                        </label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2" value="Мужчина">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            Мужчина
+                                        </label>
+                                      </div>
+                                </div>
                                 <div id="user-couch-data" class="row d-none">
                                     <div class="mb-3">
                                         <label class="form-label">Фотография</label>
@@ -154,7 +169,7 @@
                                             autocomplete="off"
                                             @error('password') is-invalid @enderror>
                                         <span class="password-center">
-                                            @error('height') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
+                                            @error('password') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
                                         </span>
                                     </div>
                                 </div>
