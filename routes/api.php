@@ -32,7 +32,7 @@ Route::prefix('user')->group(function () {
     Route::middleware('auth:sanctum')->group(function (){
         Route::get('logout/{user_id}', [UserController::class, 'LogoutAction']);
     });
-    
+    Route::get('show/role/all/{role}', [UserController::class, 'GetRoleAction']);
 });
 
 Route::prefix('type')->group(function () {
