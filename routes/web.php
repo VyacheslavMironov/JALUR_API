@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\PostUserController;
 use App\Http\Controllers\Admin\PostTypeWorkoutController;
 use App\Http\Controllers\Admin\PostWorkoutController;
 use App\Http\Controllers\Admin\PostHallController;
+// WebView
+use App\Http\Controllers\WebView\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -148,3 +150,6 @@ Route::prefix('admin')->group(function () {
     });
 });
 
+Route::prefix('web_view')->group(function(){
+    Route::get('/', [IndexController::class, 'index']);
+});

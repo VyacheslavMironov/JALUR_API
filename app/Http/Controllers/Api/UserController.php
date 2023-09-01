@@ -44,12 +44,20 @@ class UserController extends Controller
         $user = $service->SearchAction(new SearchUserByPhoneDTO($request->Phone));
         if (Hash::check($request->Password, $user[0]->Password))
         {
-            return $service->AuthAction(
-                new AuthUserDTO(
-                    $request->Phone,
-                    $request->Password
+            $user = $user->first();
+            return [
+                "Id" => $user->id,
+                "FirstName" => $user->FirstName,
+                "LastName" => $user->LastName,
+                "Phone" => $user->Phone,
+                "Role" => $user->Role,
+                "AccessKey" => $service->AuthAction(
+                    new AuthUserDTO(
+                        $request->Phone,
+                        $request->Password
+                    )
                 )
-            );
+            ];
         }
         else
         {
@@ -74,21 +82,18 @@ class UserController extends Controller
 
     public function UpdateAction(Request $request, UserService $service, ValidateService $validate)
     {
-        $validate->UserValidateAction($request);
         return $service->UpdateAction(
             new UpdateUserDTO(
                 $request->Id,
-                $request->FirstName,
-                $request->LastName,
+                $request->FirstName ? $request->FirstName : null,
+                $request->LastName ? $request->LastName : null,
                 $request->Image ? $request->Image : null,
                 $request->Description ? $request->Description : null,
                 $request->Weight ? $request->Weight : null,
                 $request->Height ? $request->Height : null,
                 $request->Age ? $request->Age : null,
-                $request->Gender,
-                $request->Phone,
-                $request->Role,
-                $request->Password
+                $request->Phone ? $request->Phone : null,
+                $request->Role ? $request->Role : null
             )
         );
     }

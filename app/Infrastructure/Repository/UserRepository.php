@@ -65,16 +65,43 @@ final class UserRepository implements IUserRepository
     public function Update(UpdateUserDTO $context)
     {
         $model = User::find($context->Id);
-        $model->FirstName = $context->FirstName;
-        $model->LastName = $context->LastName;
-        $model->Image = $context->Image;
-        $model->Description = $context->Description;
-        $model->Weight = $context->Weight;
-        $model->Height = $context->Height;
-        $model->Age = $context->Age;
-        $model->Gender = $context->Gender;
-        $model->Phone = $context->Phone;
-        $model->Role = $context->Role;
+        if (!is_null($context->FirstName))
+        {
+            $model->FirstName = $context->FirstName;
+        }
+        if (!is_null($context->LastName))
+        {
+            $model->LastName = $context->LastName;
+        }
+        if (!is_null($context->Image))
+        {
+            $model->Image = $context->Image;
+        }
+        if (!is_null($context->Description))
+        {
+            $model->Description = $context->Description;
+        }
+        if (!is_null($context->Weight))
+        {
+            $model->Weight = $context->Weight;
+        }
+        if (!is_null($context->Height))
+        {
+            $model->Height = $context->Height;
+        }
+        if (!is_null($context->Age))
+        {
+            $model->Age = $context->Age;
+        }
+        if (!is_null($context->Phone))
+        {
+            $model->Phone = $context->Phone;
+        }
+        if (!is_null($context->Role))
+        {
+            $model->Role = $context->Role;
+        }
+
         $model->save();
         return $model;
     }

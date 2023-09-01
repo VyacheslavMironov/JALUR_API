@@ -8,6 +8,7 @@ use App\Domain\Service\ScheduleService;
 use App\Domain\Service\ValidateService;
 use App\DTO\Schedules\CreateScheduleDTO;
 use App\DTO\Schedules\ShowScheduleDTO;
+use App\DTO\Schedules\ShowDateScheduleDTO;
 use App\DTO\Schedules\UpdateScheduleDTO;
 use App\DTO\Schedules\DeleteScheduleDTO;
 use App\Http\Requests\ScheduleCreateRequest;
@@ -32,6 +33,13 @@ class ScheduleController extends Controller
     {
         return $service->ShowAction(
             new ShowScheduleDTO($schedule_id)
+        );
+    }
+
+    public function ShowDateAction(int $hall, string $date, ScheduleService $service)
+    {
+        return $service->ShowDateAction(
+            new ShowDateScheduleDTO($date, $hall)
         );
     }
 

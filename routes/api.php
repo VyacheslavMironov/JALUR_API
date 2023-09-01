@@ -32,6 +32,7 @@ Route::prefix('user')->group(function () {
     // Запросы с Bearer токеном
     Route::middleware('auth:sanctum')->group(function (){
         Route::get('logout/{user_id}', [UserController::class, 'LogoutAction']);
+        Route::post('update', [UserController::class, 'UpdateAction']);
     });
     Route::get('show/{id}', [UserController::class, 'ShowAction']);
 });
@@ -61,6 +62,7 @@ Route::prefix('workouts')->group(function () {
 
 Route::prefix('schedule')->group(function () {
     Route::get('show/{schedule_id}', [ScheduleController::class, 'ShowAction']);
+    Route::get('show/date/{hall}/{date}', [ScheduleController::class, 'ShowDateAction']);
     Route::get('all', [ScheduleController::class, 'AllAction']);
     // Запросы с Bearer токеном
     Route::middleware('auth:sanctum')->group(function (){
