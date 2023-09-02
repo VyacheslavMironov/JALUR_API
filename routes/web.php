@@ -9,8 +9,7 @@ use App\Http\Controllers\Admin\PostUserController;
 use App\Http\Controllers\Admin\PostTypeWorkoutController;
 use App\Http\Controllers\Admin\PostWorkoutController;
 use App\Http\Controllers\Admin\PostHallController;
-// WebView
-use App\Http\Controllers\WebView\IndexController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -151,5 +150,23 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::prefix('web_view')->group(function(){
-    Route::get('/', [IndexController::class, 'index']);
+    Route::get('/', [App\Http\Controllers\WebView\ViewController::class, 'index'])
+        ->name('web.view');
+    Route::prefix('user')->group(function(){
+        Route::get('create', [App\Http\Controllers\WebView\ViewController::class, 'create_user'])
+            ->name('web.view.user.create');
+        Route::get('login', [App\Http\Controllers\WebView\ViewController::class, 'login'])
+            ->name('web.view.user.login');
+
+        Route::prefix('query')->group(function(){
+            Route::post('create', [App\Http\Controllers\WebView\PostUserController::class, 'create'])
+            ->name('web.view.user.query.create');
+        });
+
+        Route::prefix('success')->group(function(){
+            Route::get('/create', [App\Http\Controllers\WebView\SuccessController::class, 'create_user'])
+                ->name('web_view.success.create_user');
+        });
+    });
+    
 });

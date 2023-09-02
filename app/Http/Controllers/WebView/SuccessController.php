@@ -5,10 +5,10 @@ namespace App\Http\Controllers\WebView;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class SuccessController extends Controller
 {
-    public function index()
+    public function create_user()
     {
-        return view('web_view.index');
+        return view('web_view.success.create_user');
     }
 }

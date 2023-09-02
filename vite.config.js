@@ -8,6 +8,7 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/css/app.min.css',
+                'resources/css/web_view.min.css',
                 'resources/js/app.js',
             ],
             refresh: true,

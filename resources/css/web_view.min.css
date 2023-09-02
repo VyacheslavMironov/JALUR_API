@@ -1,0 +1,18 @@
+html,
+body{
+    background-color: #f6f6f6;
+    max-height: 100%;
+}
+
+a.btn{
+    background-color: #75646C;
+    color: #f6f6f6;
+}
+a.btn:hover{
+    background-color: #64595e;
+    color: #f6f6f6;
+}
+
+.mt-15{
+    margin-top: 15em;
+}
