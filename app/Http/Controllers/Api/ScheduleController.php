@@ -38,7 +38,7 @@ class ScheduleController extends Controller
 
     public function ShowDateAction(int $hall, string $date, ScheduleService $service)
     {
-        return $service->ShowDateAction(
+        return $service->ShowByDateAction(
             new ShowDateScheduleDTO($date, $hall)
         );
     }
