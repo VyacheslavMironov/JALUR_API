@@ -7,6 +7,7 @@ use App\DTO\Schedules\UpdateScheduleDTO;
 use App\DTO\Schedules\DeleteScheduleDTO;
 use App\DTO\Schedules\ShowHallScheduleDTO;
 use App\Domain\IRepository\IScheduleRepository;
+use App\DTO\Schedules\SearchYMDDTO;
 use App\DTO\Schedules\ShowDateScheduleDTO;
 use App\Models\Schedule;
 use App\Models\ScheduleTime;
@@ -73,5 +74,11 @@ final class ScheduleRepository implements IScheduleRepository
         $model = Schedule::find($context->Id);
         $model->delete();
         return $model;
+    }
+
+    public function ShowYMD(SearchYMDDTO $context)
+    {
+        return Schedule::where('DateWork', $context->Date)
+            ->get();
     }
 }
