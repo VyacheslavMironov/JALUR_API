@@ -63,17 +63,20 @@ final class HistoryWorkoutsRepository implements IHistoryWorkoutsRepository
         $data = array();
         $users = null;
         $schedules = null;
-
-        if ($context->WorkoutId || $context->WeekDay)
+        if ($context->WorkoutId || $context->DateWork)
         {
             $schedules = DB::table('schedules')
                 ->when($context->WorkoutId, function ($query, $workout) {
                     return $query->where('WorkoutId', $workout);
                 })
-                ->when($context->WeekDay, function ($query, $week_day) {
-                    return $query->where('WeekDay', $week_day);
+                ->when($context->DateWork, function ($query, $date_work) {
+                    return $query->where('DateWork', $date_work);
                 })
                 ->get();
+        }
+        else
+        {
+            $schedules = Schedule::get();
         }
 
         if ($context->FirstName || $context->LastName || $context->Phone || $context->Couch)
@@ -93,6 +96,7 @@ final class HistoryWorkoutsRepository implements IHistoryWorkoutsRepository
                 })
                 ->get();
         }
+
         foreach (Record::get() as $item)
         {
             $count = count($data);

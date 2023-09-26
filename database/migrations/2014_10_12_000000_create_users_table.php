@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('Image')
                 ->nullable()
                 ->unique();
-            $table->string('Description')
+            $table->text('Description')
                 ->nullable();
             $table->float('Weight')
                 ->nullable();

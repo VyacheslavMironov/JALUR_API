@@ -15,6 +15,7 @@ use App\DTO\Workouts\ShowWorkoutsDTO;
 use App\DTO\Hall\ShowHallDTO;
 use App\DTO\Schedules\ShowDateScheduleDTO;
 use App\Http\Controllers\Controller;
+use App\Models\ScheduleTime;
 use App\Models\User;
 use Carbon\Carbon;
 use TypeError;
@@ -47,7 +48,7 @@ class HomeController extends Controller
     public function schedules(int $hallId, int $month, int $year, ScheduleService $service, WorkoutService $workoutService, User $userService, ScheduleTimeService $scheduleTimeService)
     {
         $s=0;
-        
+
         if (session()->get("id"))
         {
             $calendar = [
@@ -64,14 +65,14 @@ class HomeController extends Controller
 
             for ($day = 1; $day <= $numberOfDays; $day++) {
                 $date = Carbon::createFromDate(
-                    $year, 
-                    $month, 
+                    $year,
+                    $month,
                     $day
                 );
                 $i = (int)Carbon::parse($date)->weekOfMonth - 1;
                 if ($date->day == 1)
                 {
-                    
+
                     if ($date->isTuesday() && $s == 0)
                     {
                         array_push($calendar[0], []);
@@ -111,7 +112,7 @@ class HomeController extends Controller
                         array_push($calendar[0], []);
                         array_push($calendar[0], []);
                     }
-                    
+
                     if ($date->month == $month)
                     {
                         array_push($calendar[0], [
@@ -119,7 +120,7 @@ class HomeController extends Controller
                             'Date' => $date->toDateString(),
                         ]);
                     }
-                    
+
                     $s = 1;
                 }
                 else
@@ -139,7 +140,7 @@ class HomeController extends Controller
                         }
                     } catch(TypeError)
                     {}
-                    
+
                 }
             }
             while (count($calendar[4]) < 7)
@@ -218,8 +219,8 @@ class HomeController extends Controller
         if (session()->get("id"))
         {
             $date = Carbon::createFromDate(
-                $year, 
-                $month, 
+                $year,
+                $month,
                 $day
             );
             $arr = array();
@@ -234,8 +235,8 @@ class HomeController extends Controller
                     );
                 }
             }
-            
-            
+
+
             usort($arr, function($a, $b) {
                 return strcmp($a['Time']['StartTime'], $b['Time']['StartTime']);
             });
@@ -321,8 +322,8 @@ class HomeController extends Controller
                     'schedule' => $workout->Name,
                     'schedule_type' => $typeWorkout->Name,
                     'couch' => $couch->FirstName .' '. $couch->LastName,
-                    'week_day' => $schedule->WeekDay,
-                    'start_time' => $schedule->StartTime,
+                    'date_work' => $schedule->WeekDay,
+                    'start_time' => ScheduleTime::find($schedule->ScheduleTimeId),
                 ];
                 array_push($arr, $item);
             }
@@ -338,8 +339,10 @@ class HomeController extends Controller
     {
         if (session()->get("id"))
         {
+            $recodrs = [];
             return view('history_note_search', [
-                "title" => "История записей"
+                "title" => "История записей",
+                "recodrs" => $recodrs
             ]);
         }
         return redirect()->route('admin.login');

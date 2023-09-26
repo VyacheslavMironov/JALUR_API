@@ -34,7 +34,7 @@ return new class extends Migration
             $table->foreign('ScheduleTimeId')
                 ->references('id')
                 ->on('schedule_times')
-                ->onDelete('cascade');
+                ->onDelete('SET NULL');
         });
     }
 

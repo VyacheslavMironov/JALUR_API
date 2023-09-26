@@ -24,19 +24,19 @@
                                         <div class="col-2">
                                             <span>Клиент</span>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-2">
                                             <span>Номер телефона</span>
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col-3">
                                             <span>Тренировка + тип</span>
                                         </div>
                                         <div class="col-2">
                                             <span>Тренер</span>
                                         </div>
-                                        <div class="col-1">
+                                        <div class="col-2">
                                             <span>День</span>
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col-1">
                                             <span>Время</span>
                                         </div>
                                     </div>
@@ -45,10 +45,10 @@
                                         <div class="col-2 d-flex align-items-center">
                                             <span>{{ $el['first_name'] }} {{ $el['last_name'] }}</span>
                                         </div>
-                                        <div class="col-3 d-flex align-items-center">
+                                        <div class="col-2 d-flex align-items-center">
                                             <span>{{ $el['phone'] }}</span>
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col-3">
                                             <div>
                                                 <span>{{ $el['schedule'] }}</span>
                                             </div>
@@ -61,11 +61,11 @@
                                         <div class="col-2 d-flex align-items-center">
                                             <span>{{ $el['couch'] }}</span>
                                         </div>
-                                        <div class="col-1 d-flex align-items-center">
-                                            <span>{{ $el['week_day'] }}</span>
-                                        </div>
                                         <div class="col-2 d-flex align-items-center">
-                                            <span>{{ mb_substr($el['start_time'], 0, 5) }}</span>
+                                            <span>{{ $el['date_work'] }}</span>
+                                        </div>
+                                        <div class="col-1 d-flex align-items-center">
+                                            <span>{{ mb_substr($el['start_time']['StartTime'], 0, 5) }}</span>
                                         </div>
                                     </div>
                                     @endforeach

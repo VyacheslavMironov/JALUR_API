@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PostScheduleTimeController;
 use App\Http\Controllers\Admin\PostUserController;
 use App\Http\Controllers\Admin\PostTypeWorkoutController;
 use App\Http\Controllers\Admin\PostWorkoutController;
+use App\Http\Controllers\Admin\PostSearchHistoryNodeController;
 use App\Http\Controllers\Admin\PostHallController;
 
 
@@ -61,7 +62,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/for/{hallId}/{day}/{month}/{year}', [HomeController::class, 'schedules_for_day'])
             ->name('admin.schedules_for_day');
     });
-    
+
     // История
     Route::prefix('history')->group(function () {
         Route::get('/sale', [HomeController::class, 'history_sale'])
@@ -72,9 +73,11 @@ Route::prefix('admin')->group(function () {
                 ->name('admin.history.note');
             Route::get('/search', [HomeController::class, 'history_note_search'])
                 ->name('admin.history.note.search');
+            Route::post('/search/filter', [PostSearchHistoryNodeController::class, 'filter'])
+                ->name('admin.history.note.search.filter');
         });
     });
-    
+
     // Тренировки
     Route::prefix('training')->group(function () {
         Route::get('/', [HomeController::class, 'training'])
@@ -110,7 +113,7 @@ Route::prefix('admin')->group(function () {
             ->name('admin.users.create');
         Route::get('/update/{id}', [HomeController::class, 'users_update'])
             ->name('admin.users.update');
-        
+
         Route::get('/couch', [HomeController::class, 'user_couches'])
             ->name('admin.users.couch');
 
@@ -133,7 +136,7 @@ Route::prefix('admin')->group(function () {
             ->name('admin.halls');
         Route::get('/show/{id}', [HomeController::class, 'hall_show'])
             ->name('admin.hall');
-        
+
             Route::prefix('schedules')->group(function () {
                 Route::get('/', [HomeController::class, 'hall_shadule'])
                     ->name('admin.hall_shadules');
@@ -168,5 +171,5 @@ Route::prefix('web_view')->group(function(){
                 ->name('web_view.success.create_user');
         });
     });
-    
+
 });

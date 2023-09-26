@@ -14,6 +14,7 @@ use App\DTO\TypeWorkouts\ShowTypeWorkoutsDTO;
 use App\DTO\Workouts\ShowWorkoutsDTO;
 use App\Http\Controllers\Controller;
 use App\Models\HistoryWorkouts;
+use App\Models\ScheduleTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,7 +29,7 @@ class PostSearchHistoryNodeController extends Controller
                 $request->LastName ? $request->LastName : null,
                 $request->Phone ? $request->Phone : null,
                 $request->Couch ? $request->Couch : null,
-                $request->WeekDay ? $request->WeekDay : null,
+                $request->DateWork ? $request->DateWork : null,
                 $request->WorkoutId ? $request->WorkoutId : null,
             )
         );
@@ -46,7 +47,6 @@ class PostSearchHistoryNodeController extends Controller
                 new ShowTypeWorkoutsDTO($workout->TypeWorkoutId)
             );
             $couch = $userService->ShowAction($schedule->Couch);
-
             $item = [
                 'first_name' => $user->FirstName,
                 'last_name' => $user->LastName,
@@ -54,13 +54,14 @@ class PostSearchHistoryNodeController extends Controller
                 'schedule' => $workout->Name,
                 'schedule_type' => $typeWorkout->Name,
                 'couch' => $couch->FirstName .' '. $couch->LastName,
-                'week_day' => $schedule->WeekDay,
-                'start_time' => $schedule->StartTime,
+                'date_work' => $schedule->DateWork,
+                'start_time' => ScheduleTime::find($schedule->ScheduleTimeId),
             ];
             array_push($arr, $item);
         }
         return view('history_note', [
-            'recodrs' => $arr
+            'title' => "История записей",
+            "recodrs" => $arr
         ]);
     }
 }
