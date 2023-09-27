@@ -236,14 +236,29 @@ class HomeController extends Controller
                 }
             }
 
-
             usort($arr, function($a, $b) {
                 return strcmp($a['Time']['StartTime'], $b['Time']['StartTime']);
             });
-
             return view('schedules_for_day', [
                 "schedule" => $arr,
                 "title" => "Расписание"
+            ]);
+        }
+        return redirect()->route('admin.login');
+    }
+
+    public function schedules_records(int $schedule_id, RecordsService $recordsService, UserService $userService)
+    {
+        if (session()->get("id"))
+        {
+            $arr = [];
+            foreach ($recordsService->ShowByScheduleAction($schedule_id) as $item)
+            {
+                array_push($arr, $userService->ShowAction($item->UserId));
+            }
+            return view('schedules_records', [
+                "title" => "Расписание",
+                "records" => $arr
             ]);
         }
         return redirect()->route('admin.login');

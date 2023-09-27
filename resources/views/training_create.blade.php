@@ -42,27 +42,39 @@
                                             </span>
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label">Выберите  тренера</label>
-                                            <select class="form-select" aria-label="Default select example" name="couch" @error('couch') is-invalid @enderror>
-                                                <option selected>Нажмите что бы выбрать</option>
-                                                @foreach($workout as $el)
-                                                    <option value="{{ $el->id }}">{{$el->FirstName}} {{ $el->LastName }}</option>
-                                                @endforeach
-                                            </select>
-                                            <span>
-                                                @error('couch') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
-                                            </span>
+                                            @if(count($workout))
+                                                <label class="form-label">Выберите  тренера</label>
+                                                <select class="form-select" aria-label="Default select example" name="couch" @error('couch') is-invalid @enderror>
+                                                    <option selected>Нажмите что бы выбрать</option>
+                                                    @foreach($workout as $el)
+                                                        <option value="{{ $el->id }}">{{$el->FirstName}} {{ $el->LastName }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <span>
+                                                    @error('couch') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
+                                                </span>
+                                            @else
+                                                <div class="alert alert-warning" role="alert">
+                                                    Данных нет.
+                                                </div>
+                                            @endif
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label">Выберите  тип</label>
-                                            <select class="form-select" name="type_workout_id" aria-label="Default select example" @error('type_workout_id') is-invalid @enderror>
-                                                @foreach($type_workout as $el)
-                                                    <option value="{{ $el->id }}">{{ $el->Name }}</option>
-                                                @endforeach
-                                            </select>
-                                            <span>
-                                                @error('type_workout_id') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
-                                            </span>
+                                            @if(count($type_workout))
+                                                <label class="form-label">Выберите  тип</label>
+                                                <select class="form-select" name="type_workout_id" aria-label="Default select example" @error('type_workout_id') is-invalid @enderror>
+                                                    @foreach($type_workout as $el)
+                                                        <option value="{{ $el->id }}">{{ $el->Name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <span>
+                                                    @error('type_workout_id') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
+                                                </span>
+                                            @else
+                                                <div class="alert alert-warning" role="alert">
+                                                    Данных нет.
+                                                </div>
+                                            @endif
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Выберите обложку</label>

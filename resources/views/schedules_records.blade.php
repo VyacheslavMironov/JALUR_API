@@ -9,7 +9,6 @@
             <div class="col-12">
                 <div class="d-flex  justify-content-between">
                     <div class="col-8 d-flex">
-                        {{-- <a href="{{ route('admin.schedules') }}" class="btn btn-panel m-2">Список</a> --}}
                         <a href="{{ route('admin.schedules.create') }}" class="btn btn-panel btn-panel-active m-2">Добавить</a>
                         <a href="{{ route('admin.schedules.time') }}" class="btn btn-panel m-2">Время</a>
                     </div>
@@ -18,23 +17,29 @@
             <div class="col-12">
                 <div class="card w-100 p-2">
                     <div class="container">
-                        @if (count($schedule))
+                        @if (count($records))
                             <table class="table table-hover">
                                 <thead>
-                                  <tr>
-                                    <th scope="col">Время</th>
-                                    <th scope="col">Тренировка</th>
-                                    <th scope="col">Тренер</th>
-                                    <th scope="col">Записано</th>
-                                  </tr>
+                                <tr>
+                                    <th scope="col">Имя</th>
+                                    <th scope="col">Фамилия</th>
+                                    <th scope="col">Номер телефона</th>
+                                    <th scope="col">Возраст</th>
+                                    <th scope="col">Рост</th>
+                                    <th scope="col">Вес</th>
+                                    <th scope="col">Пол</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($schedule as $el)
+                                    @foreach ($records as $el)
                                         <tr>
-                                            <td>{{ mb_substr($el->Time['StartTime'], 0, 5) }}</td>
-                                            <td>{{ $el->Workout['Name'] }}</td>
-                                            <td>{{ $el->CouchUser['LastName'] }} {{ $el->CouchUser['FirstName'] }}</td>
-                                            <td><small><a href="{{ route('admin.schedules_records', ['schedule_id' => $el->id]) }}">Подробнее...</a></small></td>
+                                            <td>{{ $el->FirstName }}</td>
+                                            <td>{{ $el->LastName }}</td>
+                                            <td>{{ $el->Phone }}</td>
+                                            <td>{{ $el->Age }}</td>
+                                            <td>{{ $el->Height }}</td>
+                                            <td>{{ $el->Weight }}</td>
+                                            <td>{{ $el->Gender }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -41,4 +41,9 @@ class RecordsService implements IRecordsService
     {
         return $this->repository->Delete($context);
     }
+
+    public function ShowByScheduleAction(int $schedule_id)
+    {
+        return $this->repository->ShowBySchedule($schedule_id);
+    }
 }

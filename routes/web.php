@@ -61,6 +61,8 @@ Route::prefix('admin')->group(function () {
             ->name('admin.schedules');
         Route::get('/for/{hallId}/{day}/{month}/{year}', [HomeController::class, 'schedules_for_day'])
             ->name('admin.schedules_for_day');
+        Route::get('/records/{schedule_id}', [HomeController::class, 'schedules_records'])
+            ->name('admin.schedules_records');
     });
 
     // История

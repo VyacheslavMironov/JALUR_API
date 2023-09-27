@@ -45,4 +45,10 @@ final class RecordRepository implements IRecordsRepository
         $model->delete();
         return $model;
     }
+
+    public function ShowBySchedule(int $schedule_id)
+    {
+        $model = Record::where('ScheduleId', $schedule_id)->get();
+        return $model;
+    }
 }
