@@ -9,13 +9,14 @@ use Illuminate\Http\Request;
 
 class PayController extends Controller
 {
-    public function pay(Request $request, PayService $payService)
+    public function Pay(Request $request, PayService $payService)
     {
-        return $payService->pay(
+        return $payService->Pay(
             new PayRequestDTO(
-                $request->value,
-                $request->redirect_url,
-                $request->description
+                $request->UserId,
+                $request->Value,
+                $request->RedirectUrl,
+                $request->Description
             )
         );
     }
