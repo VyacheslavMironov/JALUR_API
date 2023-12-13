@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('PayId')
                 ->unique()
                 ->nullable(false);
+            $table->integer('UserId');
             $table->string('StatusPay')
                 ->nullable(false);
             $table->string('DatePay')
