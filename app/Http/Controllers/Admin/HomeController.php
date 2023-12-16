@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Domain\Service\GlampingService;
 use App\Domain\Service\RecordsService;
 use App\Domain\Service\ScheduleService;
 use App\Domain\Service\ScheduleTimeService;
@@ -22,6 +23,11 @@ use TypeError;
 
 class HomeController extends Controller
 {
+    private GlampingService $_service;
+    public function __construct(GlampingService $service)
+    {
+        $this->_service = $service;
+    }
     public function index()
     {
         return redirect('admin/login');
@@ -480,4 +486,26 @@ class HomeController extends Controller
             'title' => "Залы"
         ]);
     }
+
+    public function glamping()
+    {
+        return view('glamping', [
+            'glamping' => $this->_service->All(),
+            'title' => "Глемпинг"
+        ]);
+    }
+
+    public function glamping_add()
+    {
+        return view('glamping_create', [
+            'title' => "Глемпинг"
+        ]);
+    }
+
+    // public function glamping_update()
+    // {
+    //     return view('glamping_update', [
+    //         'title' => "Глемпинг"
+    //     ]);
+    // }
 }

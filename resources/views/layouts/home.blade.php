@@ -45,6 +45,9 @@
                                 <a href="{{ route('admin.training') }}" class="nav-item btn bx-button-menu @if($title == 'Занятия') menu-active @endif">Занятия</a>
                             </li>
                             <li class="mt-3">
+                                <a href="{{ route('admin.glamping') }}" class="nav-item btn bx-button-menu @if($title == 'Глемпинг') menu-active @endif">Глемпинг</a>
+                            </li>
+                            <li class="mt-3">
                                 <a href="{{ route('admin.users') }}" class="nav-item btn bx-button-menu @if($title == 'Пользователи') menu-active @endif">Пользователи</a>
                             </li>
                             <li class="mt-3">

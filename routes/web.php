@@ -152,6 +152,13 @@ Route::prefix('admin')->group(function () {
         Route::post('/delete', [PostHallController::class, 'delete'])
             ->name('admin.query.delete');
     });
+
+    Route::prefix('glamping')->group(function(){
+        Route::get('/', [HomeController::class, 'glamping'])
+            ->name('admin.glamping');
+        Route::get('/create', [HomeController::class, 'glamping_add'])
+            ->name('admin.glamping.create');
+    });
 });
 
 Route::prefix('web_view')->group(function(){

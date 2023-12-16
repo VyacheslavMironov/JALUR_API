@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('HallId');
             $table->integer('WorkoutId');
+            $table->integer('GlampingId');
             $table->integer('Couch');
             $table->date('DateWork');
             $table->integer('ScheduleTimeId');
@@ -27,14 +28,17 @@ return new class extends Migration
                 ->references('id')
                 ->on('workouts')
                 ->onDelete('cascade');
+            $table->foreign('GlampingId')
+                ->references('id')
+                ->on('glampings')
+                ->onDelete('cascade');
             $table->foreign('Couch')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
             $table->foreign('ScheduleTimeId')
                 ->references('id')
-                ->on('schedule_times')
-                ->onDelete('SET NULL');
+                ->on('schedule_times');
         });
     }
 

@@ -176,6 +176,8 @@ return [
         App\Providers\ScheduleServiceProvider::class,
         App\Providers\RecordsServiceProvider::class,
         App\Providers\HistoryWorkoutsServiceProvider::class,
+        App\Providers\GlampingRepositoryProvider::class,
+        App\Providers\GlampingServiceProvider::class,
     ])->toArray(),
 
     /*

@@ -55,7 +55,6 @@ class PostUserController extends Controller
                 $context['weight'],
                 $context['height'],
                 $context['age'],
-                $context['gender'],
                 $context['phone'],
                 $context['role'],
             )
